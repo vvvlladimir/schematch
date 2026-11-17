@@ -502,6 +502,49 @@ rule should catch: an `sku` that holds the shop's home page URL, an image given
 as a URL in one shop and as a file name in another, or a condition written as
 `New` / `Новый`.
 
+### Steps 3 and 5: implemented in `tools/wdc_scenarios.py`
+
+```shell
+python tools/wdc_scenarios.py build      # 200 sampled shop pairs (seed 20261117), readable names
+python tools/wdc_scenarios.py hide       # transform_dataset.py opaque-tables + permute
+python tools/wdc_scenarios.py config fast-opaque --corpus opaque --matchers fast
+python tools/wdc_scenarios.py run fast-opaque --jvm-arg=-Xmx6g
+```
+
+- One scenario per shop pair: `source/<shop>.csv`, `target/<shop>.csv`,
+  `ground_truth/<shop>___<shop>.csv` (0/1 matrix from the ground truth rules).
+  Empty columns are dropped, because they cannot be matched from values.
+- The 200 pairs hold 24,973 column pairs and 1,150 true pairs (about 5.75 per
+  scenario); every scenario has at least one true pair. The 133 related 1:n
+  price pairs are listed in `related_pairs.csv`, not in the ground truth.
+- `hide` writes a second corpus with salted table and column names and a
+  permuted column order.
+- `config` writes a configuration directory under `datasets-local/wdc/config/`.
+  `run` puts it first on the classpath, so `src/main/resources` stays unchanged.
+- The Java Precision/Recall metrics accept only 0/1 matrices, so raw scores are
+  evaluated with `tools/evaluate_paper.py` (`paperEvaluation`, see
+  [Evaluation](evaluation.md)). It needs NumPy/SciPy; the configuration uses
+  `.venv/bin/python` (Python 3.13 with `requirements.txt`; the pinned NumPy has
+  no build for Python 3.14).
+
+**First results, fast Java value matchers, 200 scenarios, about 5 s per run:**
+
+| Matcher | F1_H names hidden | F1_H names visible | MRR names hidden |
+|---|---|---|---|
+| CharDistributionMatcher | 0.435 | 0.435 | 0.753 |
+| KolmogorovSmirnovMatcher | 0.379 | 0.391 | 0.681 |
+| PatternProfileMatcher | 0.365 | 0.376 | 0.619 |
+| JensenShannonValueMatcher | 0.259 | 0.259 | 0.448 |
+| PMFMatcher | 0.152 | 0.186 | 0.498 |
+| ValueShapeRoleMatcher | 0.136 | 0.139 | 0.441 |
+| LevenshteinMatcher (labels) | — | 0.754 | — |
+
+F1_H is the F1 of a Hungarian 1:1 assignment; MRR is the mean reciprocal rank
+of the correct partner per source column. Value matchers give the same MRR with
+and without names; the small F1_H differences come from tie-breaking after the
+column permutation. The label matcher confirms that visible names give the
+answer away, so the hidden-name corpus is the one to report.
+
 ## 8. Prototype
 
 The early prototype was replaced by `tools/wdc_candidates.py`.
