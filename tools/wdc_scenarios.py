@@ -9,6 +9,13 @@ tools/wdc_prepare.py (clean + groundtruth).
     python tools/wdc_scenarios.py config fast-opaque --corpus opaque
     python tools/wdc_scenarios.py run fast-opaque        # needs a compiled Schematch
 
+All 4,950 shop pairs for step 9 (tools/wdc_schema.py):
+
+    python tools/wdc_scenarios.py build --pairs 0 --name all-readable
+    python tools/wdc_scenarios.py hide --name all-readable
+    python tools/wdc_scenarios.py config all-fast --corpus all-opaque --no-eval
+    python tools/wdc_scenarios.py run all-fast --jvm-arg=-Xmx8g
+
 Everything is written below datasets-local/wdc/ (git-ignored). The active
 configuration in src/main/resources is not touched: `run` puts the generated
 configuration directory first on the classpath.
@@ -98,7 +105,7 @@ def related(a: str, b: str) -> bool:
 
 
 def cmd_build(args) -> None:
-    out = SCENARIOS / "readable"
+    out = SCENARIOS / args.name
     if out.exists():
         sys.exit(f"{out} exists; remove it to rebuild")
     tables = load_tables()
@@ -140,10 +147,15 @@ def cmd_build(args) -> None:
     print(f"  scenarios without any true pair: {sum(1 for r in summary if r[6] == 0)}")
 
 
+def hidden_name(readable: str) -> str:
+    """readable -> opaque, all-readable -> all-opaque"""
+    return readable.replace("readable", "opaque") if "readable" in readable else f"{readable}-opaque"
+
+
 def cmd_hide(args) -> None:
-    src = SCENARIOS / "readable"
-    tmp = SCENARIOS / "_opaque_tmp"
-    dst = SCENARIOS / "opaque"
+    src = SCENARIOS / args.name
+    tmp = SCENARIOS / f"_{args.name}_hidden_tmp"
+    dst = SCENARIOS / hidden_name(args.name)
     if dst.exists():
         sys.exit(f"{dst} exists; remove it to rebuild")
     shutil.rmtree(tmp, ignore_errors=True)
@@ -185,7 +197,7 @@ def cmd_config(args) -> None:
         "evaluateFirstLineMatchers": "False", "evaluateSecondLineMatchers": "False",
         "evaluateSimMatrixBoostingOnFirstLineMatchers": "False",
         "evaluateSimMatrixBoostingOnSecondLineMatchers": "False",
-        "paperEvaluation": "True",
+        "paperEvaluation": "False" if args.no_eval else "True",
         "paperEvaluationPython": json.dumps(args.python),
         "paperEvaluationScript": '"tools/evaluate_paper.py"',
     }
@@ -220,14 +232,18 @@ def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="command", required=True)
     b = sub.add_parser("build", help="write readable scenarios for sampled shop pairs")
+    b.add_argument("--name", default="readable", help="corpus name below datasets-local/wdc/scenarios")
     b.add_argument("--pairs", type=int, default=200, help="number of shop pairs; 0 = all 4,950")
     b.add_argument("--seed", type=int, default=DEFAULT_SEED)
     h = sub.add_parser("hide", help="opaque table/column names and permuted column order")
+    h.add_argument("--name", default="readable", help="readable corpus to hide")
     h.add_argument("--seed", type=int, default=DEFAULT_SEED)
     c = sub.add_parser("config", help="write a Schematch configuration directory")
     c.add_argument("name")
-    c.add_argument("--corpus", choices=["readable", "opaque"], default="opaque")
+    c.add_argument("--corpus", default="opaque", help="corpus name, e.g. opaque or all-opaque")
     c.add_argument("--matchers", choices=sorted(MATCHER_SETS), default="fast")
+    c.add_argument("--no-eval", action="store_true",
+                   help="skip the raw-score evaluation (for the all-pairs corpus used by step 9)")
     c.add_argument("--python", default=".venv/bin/python",
                    help="interpreter with NumPy/SciPy for the raw-score evaluation")
     r = sub.add_parser("run", help="run Schematch with a generated configuration")

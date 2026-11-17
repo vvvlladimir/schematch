@@ -688,6 +688,64 @@ remedies follow the course material:
 2. **Holistic clustering (step 9):** a brand column that matches the brand
    columns of many other shops is a brand, even if one pairwise decision fails.
 
+### Step 9: shared schema over all 100 shops (`tools/wdc_schema.py`)
+
+```shell
+python tools/wdc_scenarios.py build --pairs 0 --name all-readable    # 4,950 shop pairs
+python tools/wdc_scenarios.py hide --name all-readable               # -> all-opaque
+python tools/wdc_scenarios.py config all-fast --corpus all-opaque --no-eval
+python tools/wdc_scenarios.py run all-fast --jvm-arg=-Xmx8g           # about 30 s
+.venv/bin/python tools/wdc_schema.py results/<run> --corpus all-opaque --readable all-readable
+```
+
+The script combines the matrices of every shop pair exactly as the best method
+of steps 7/8 (six value matchers + RoleProfile, candidate filter), writes all
+scores into one 1,124 × 1,124 column similarity matrix and groups the columns.
+Output in `results/<run>/wdc_schema/`: `clustering_report.csv` and
+`global_schema.csv` (one row per cluster: shops, purity, attributes, members).
+
+Scores are pair-wise precision/recall/F1 over all 29,268 true pairs:
+
+| Method | Clusters | P | R | F1 |
+|---|---|---|---|---|
+| Pairwise decisions only (mutual top-1 per shop pair) | – | 0.607 | 0.582 | **0.594** |
+| **One-per-shop merge along mutual top-1 edges (chosen)** | **65** | **0.631** | 0.542 | 0.583 |
+| + join whole clusters, average score ≥ 0.4 | 51 | 0.626 | 0.543 | 0.581 |
+| One-per-shop merge, all scores ≥ 0.6 | 206 | 0.664 | 0.500 | 0.570 |
+| One-per-shop merge, all scores ≥ 0.8 | 669 | 0.877 | 0.266 | 0.409 |
+| Average linkage, cut at 0.5 | 133 | 0.448 | 0.542 | 0.491 |
+| Average linkage, cut at 0.7 | 13 | 0.183 | 0.873 | 0.303 |
+
+- **Average linkage fails:** without a hard rule it merges several columns of
+  the same shop and chains unrelated attributes (sku with price and review
+  counts).
+- **One-per-shop merge** joins the strongest mutual pairs first and refuses any
+  merge that would put two columns of the same shop into one cluster. It has no
+  tuned parameter, so its score is not optimistic. It turns 4,950 pairwise
+  decisions into 65 consistent attributes at about the same F1.
+- **The holistic step did not fix brand** (pairwise recall 31%, clusters 25%).
+  Brand columns of different shops are split over several clusters, and their
+  average similarity across clusters is low, so the second pass does not join
+  them. The limit is the evidence in the values, not the selector: by values
+  alone, brands look like categories, colours or languages (short repeated
+  words).
+
+**The resulting schema.** 36 of the 65 clusters cover at least 5 shops. The
+largest ones (purity = share of the majority attribute):
+
+| Cluster | Shops | Purity | Majority attribute | Mixed with |
+|---|---|---|---|---|
+| 1 | 90 | 87% | name | brand, url.name, offers.name |
+| 2 | 84 | 100% | pricecurrency | – |
+| 3 | 81 | 80% | description | name, url.description, review.reviewbody |
+| 4 | 69 | 100% | availability | – |
+| 5 | 60 | 88% | price | highprice, rating |
+| 6 | 58 | 59% | brand | category, name, manufacturer |
+| 7 | 58 | 57% | sku | highprice, mpn, lowprice |
+| 9 | 34 | 62% | pricevaliduntil | review/publication dates |
+| 14 | 28 | 93% | itemcondition | – |
+| 16 | 25 | 96% | aggregaterating.ratingvalue | – |
+
 ## 8. Prototype
 
 The early prototype was replaced by `tools/wdc_candidates.py`.
