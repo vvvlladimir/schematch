@@ -1,5 +1,7 @@
 # Plan: Matching the columns of 100 web-shop product tables
 
+Results are summarized in the [report](wdc-product-matching-report.md).
+
 This document describes how we match the columns of the 100 product tables in
 `vorbereitete_tabellen/` with Schematch, and how search-space reduction
 ("Suchraumreduzierung") from the Data Engineering course is applied. It is written

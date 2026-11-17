@@ -15,6 +15,7 @@ relative to the repository root unless stated otherwise.
 ## Project plans
 
 - [WDC product matching plan](wdc-product-matching-plan.md): matching the 100 web-shop tables in `vorbereitete_tabellen/` with search-space reduction.
+- [WDC product matching report](wdc-product-matching-report.md): results, error analysis and lessons of that plan.
 
 ## Optional Python backends
 
