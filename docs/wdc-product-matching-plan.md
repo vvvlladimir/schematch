@@ -582,6 +582,112 @@ still contribute independent evidence.
 Hungarian assignment reaches F1 0.571 (precision 0.52, recall 0.66), because
 it also assigns columns that have no partner.
 
+### Error analysis per attribute
+
+```shell
+.venv/bin/python tools/wdc_combine.py results/<run> --analyze "Mean(all value matchers) + candidate filter"
+```
+
+Hidden column labels are mapped back to readable names by identical column
+values (values were not changed by `hide`). Pairs are selected by mutual top-1.
+Output: `results/<run>/wdc_combined/errors_by_attribute.csv`.
+
+| Attribute | True pairs | Recall | Precision |
+|---|---|---|---|
+| pricecurrency | 144 | 100% | 100% |
+| pricevaliduntil | 23 | 96% | 73% |
+| availability | 93 | 95% | 98% |
+| name | 193 | 67% | 70% |
+| price | 148 | 55% | 72% |
+| itemcondition | 33 | 55% | 69% |
+| description | 159 | 54% | 87% |
+| brand | 139 | 29% | 64% |
+| sku | 117 | 26% | 57% |
+| category | 10 | 20% | 11% |
+| productid | 8 | 12% | 6% |
+| mpn | 9 | 0% | 0% |
+
+By column type, recall is 100% for currency, 96% for dates, 86% for
+enumerations, but only 51% for text and 42% for IDs and numbers.
+
+Most frequent wrong pairs: name → brand, name → description, description →
+name, category → brand (text with different meaning); mpn → sku, productid →
+sku, sku → mpn (codes); rating → price, reviewcount → sku (numbers).
+
+**Conclusions:**
+
+1. Columns with a fixed format (currency, date, availability) are solved by the
+   value matchers. Nothing to gain there.
+2. The weak spot is **text** (name, description, brand, category). The value
+   matchers see only "short text vs long text"; they cannot tell a brand from a
+   product name. This is where a multilingual SBERT model is expected to help.
+3. **Product IDs** (sku, mpn, productid) are confused with each other. All of
+   them are codes, and shops use them inconsistently, so neither format nor
+   meaning separates them well. SBERT is not expected to help much here.
+4. **Numbers** (price vs rating vs review count) could be separated by value
+   ranges; ratings lie between 0 and 5 or 0 and 100.
+5. Some reported errors are ties between two columns with identical values in
+   the same table (for example `name` and `url.name`); both are selected and
+   only one counts as correct. Precision is therefore slightly understated.
+
+### Simpler alternative to a language model: role profiles (`tools/wdc_roles.py`)
+
+The course material does not use language models. Its matcher classes are
+labels, types/constraints, structure and instances. Since names are hidden, the
+idea is to describe each column by the **role it plays in its own table**,
+which needs no model and works in every language:
+
+| Feature | Meaning | Median: brand / category / name / description |
+|---|---|---|
+| distinct | share of distinct values | 0.50 / 0.48 / 1.00 / 1.00 |
+| words | mean number of words | 1.6 / 1.8 / 6.3 / 36.2 |
+| inside | value occurs inside a longer value of another column in the same row | 45% / 9% / 6% / 0% |
+| contains | value contains a shorter value of another column in the same row | 0% / 0% / 4% / 36% |
+
+Further features: mean length, share of numbers, share of numbers in [0, 5]
+(ratings), share of integers, magnitude of the median number. Features are
+standardized over all tables; similarity = exp(-distance² / (2·dims)).
+
+**Results (200 scenarios, names hidden):**
+
+| Method | F1_H | F1_M | MRR |
+|---|---|---|---|
+| **Mean(6 value matchers + RoleProfile) + filter** | **0.582** | 0.582 | **0.847** |
+| Mean(6 value matchers + 2× RoleProfile) + filter | 0.582 | 0.584 | 0.844 |
+| Mean(6 value matchers) + filter | 0.571 | 0.592 | 0.841 |
+| 50% value matchers + 50% RoleProfile + filter | 0.568 | 0.579 | 0.841 |
+| RoleProfile + filter (alone) | 0.502 | 0.515 | 0.816 |
+| CharDistributionMatcher + filter (best Schematch matcher alone) | 0.498 | 0.504 | 0.789 |
+
+- Alone, RoleProfile is the strongest single matcher, with no model and only
+  nine numbers per column.
+- In the combination it adds about one point of F1_H and MRR. The Schematch
+  matchers already capture length and repetition indirectly, so much of the
+  signal overlaps.
+
+**Where the brand pairs are really lost.** Rank of the correct partner per
+source column (Mean of 6 + RoleProfile + filter):
+
+| Attribute | Rank 1 | Top 3 |
+|---|---|---|
+| name | 77% | 99% |
+| description | 76% | 97% |
+| price | 72% | 89% |
+| brand | 61% | 88% |
+| sku | 48% | 86% |
+| all others | 87% | 96% |
+
+Brand is ranked first in 61% of the cases, but mutual top-1 keeps only about
+half of those. Most misses are "matched to nothing": the brand column of the
+target table prefers a different source column, so the pair is not mutual. The
+weak point for brand is therefore the **selector**, not the matcher. Two
+remedies follow the course material:
+
+1. **Top-k with confirmation:** keep the best three candidates for uncertain
+   columns and let a person confirm. That covers 86–99% of the true pairs.
+2. **Holistic clustering (step 9):** a brand column that matches the brand
+   columns of many other shops is a brand, even if one pairwise decision fails.
+
 ## 8. Prototype
 
 The early prototype was replaced by `tools/wdc_candidates.py`.
