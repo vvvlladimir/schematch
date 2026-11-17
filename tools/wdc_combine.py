@@ -101,15 +101,15 @@ def read_table(path: Path):
     return header, cols
 
 
-def readable_names(corpus: str, scenario: str) -> dict[str, str]:
+def readable_names(corpus: str, scenario: str, readable: str = "readable") -> dict[str, str]:
     """Map 'table.column' labels of a hidden-name scenario to readable column names
     by identical column values (names were hashed, values were not touched)."""
-    if corpus == "readable":
+    if corpus == readable:
         return {}
     out = {}
     for side in ("source", "target"):
         hidden = next((SCENARIOS / corpus / "wdc" / scenario / side).glob("*.csv"))
-        plain = next((SCENARIOS / "readable" / "wdc" / scenario / side).glob("*.csv"))
+        plain = next((SCENARIOS / readable / "wdc" / scenario / side).glob("*.csv"))
         hh, hc = read_table(hidden)
         ph, pc = read_table(plain)
         pool = defaultdict(list)
@@ -134,7 +134,7 @@ def analyze(args) -> None:
         for r in csv.DictReader(fh):
             attr_of[(wc_safe(r["table"]), r["column"])] = r["shared_attribute"]
     scen_tables = {}
-    with (SCENARIOS / "readable" / "scenarios.csv").open(encoding="utf-8") as fh:
+    with (SCENARIOS / args.readable / "scenarios.csv").open(encoding="utf-8") as fh:
         for r in csv.DictReader(fh):
             scen_tables[r["scenario"]] = (wc_safe(r["source_table"]), wc_safe(r["target_table"]))
 
@@ -150,7 +150,7 @@ def analyze(args) -> None:
             if r["matcher"] != args.analyze:
                 continue
             n += 1
-            names = readable_names(args.corpus, r["scenario"])
+            names = readable_names(args.corpus, r["scenario"], args.readable)
             st, tt = scen_tables[r["scenario"]]
             sa = [attr_of[(st, names.get(l, l.split(".", 1)[1]))] for l in r["source_labels"]]
             ta = [attr_of[(tt, names.get(l, l.split(".", 1)[1]))] for l in r["target_labels"]]
@@ -221,6 +221,7 @@ def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("run", type=Path, help="results/<run> directory of a Schematch run")
     p.add_argument("--corpus", default="opaque", help="scenario corpus the run used")
+    p.add_argument("--readable", default="readable", help="readable twin of that corpus")
     p.add_argument("--analyze", metavar="METHOD",
                    help="error analysis per attribute for METHOD (after a combine run)")
     p.add_argument("--show", type=int, default=25)

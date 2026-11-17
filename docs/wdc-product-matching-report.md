@@ -25,6 +25,12 @@ commands and intermediate decisions are in the
   attributes at about the same quality (F1 0.583 vs 0.594 pairwise). The
   holistic step did not fix brand: by values alone, brands look like categories
   or colours.
+- **The ground truth was corrected.** A plausibility audit flagged 37 columns;
+  18 had a header that did not describe their values (site names, artists,
+  product titles under `brand`) and were relabelled or excluded. With the
+  corrected answers the filter keeps 99.4% of the true pairs and the pairwise
+  F1 over all shop pairs rises from 0.594 to 0.608. Unless noted otherwise, the
+  numbers in sections 4–7 are those of the header-based version 1 (section 6).
 
 ## 2. Data
 
@@ -87,6 +93,7 @@ Matcher → Combiner → Selector → Mapping* and the duplicate-detection phase
 | Step | Tool |
 |---|---|
 | Cleaning, ground truth | `tools/wdc_prepare.py` |
+| Ground-truth audit and manual corrections | `tools/wdc_gt_audit.py`, `tools/wdc_gt_overrides.csv` |
 | Candidate selection, PC/RR | `tools/wdc_candidates.py` |
 | Schematch scenarios, hiding names, runs | `tools/wdc_scenarios.py` |
 | Role profile matcher | `tools/wdc_roles.py` |
@@ -233,6 +240,80 @@ Findings:
 4. **Numbers** are sometimes confused (rating ↔ price, review count ↔ sku).
 5. Some counted errors are ties between two identical columns of the same table
    (for example `name` and `url.name`); precision is slightly understated.
+6. **Some "errors" are errors of the ground truth**, see below.
+
+### Errors found in the ground truth
+
+The ground truth trusts the header each shop declared. Shops misuse
+schema.org markup, so a header does not always describe its values. Example: if
+shop A has `brand` = Apple, Sony, shop B has only `name` with the values Apple,
+Sony, and shop C has `name` with people's names, the header-based ground truth
+says B.`name` = C.`name` and A.`brand` ≠ B.`name`. Both statements are wrong.
+
+**How the suspects were found.** `tools/wdc_gt_audit.py` compares every
+non-empty column with what its attribute should look like: a brand is short and
+repeats, a product name is unique and has several words, a price is a number, a
+currency is an ISO code, a rating is at most 100, and the value type matches
+the type most shops use for the attribute. It flagged 37 of 1,124 columns
+(`datasets-local/wdc/ground_truth/audit.csv`). Each one was inspected by hand.
+The check only flags; a person decides.
+
+**Decisions (recorded in `tools/wdc_gt_overrides.csv`, applied by
+`wdc_prepare.py groundtruth`):**
+
+| Shop | Column | Values | Decision |
+|---|---|---|---|
+| tower.com | `brand` | "Byrd, Charlie", "Getz, Stan" (musicians) | new attribute `creator` |
+| pixels.com | `brand.name` | "Lars Lentz - Website" (artists) | `creator` |
+| threadless.com | `brand.name` | "HIDENbehindAroc's Shop" (artists' shops) | `creator` |
+| creativemarket.com | `brand.name` | "Valerie Bodnar" (designers) | `creator` |
+| udg.mx | `brand.name` | identical to `name` in all 100 rows | relabel to `name` |
+| revolve.com | `description` | "dress", "top", "jean" | relabel to `category` |
+| kozaleathers.com | `name` | "M / Turquoise Blue" (size/colour) | new attribute `variant` |
+| pp.ua | `brand.name`, `mpn`, `sku` | the same long product titles in all three | exclude |
+| elliman.com | `brand.name` | "MLS Limousine" (listing service) | exclude |
+| eltiempo.com | `name`, `description`, `sku`, `productid` | one constant value for the whole news site | exclude |
+| semana.com | `name`, `sku`, `productid` | one constant value for the whole news site | exclude |
+
+In total 18 columns: 7 relabelled, 11 excluded from every evaluation.
+
+**Kept as they are:**
+
+- *Borderline brands:* made-in-china.com (factory names) and skipthedishes.com
+  ("KFC (230 Queen St. E)") count as brand.
+- *Header correct, flagged by mistake:* iso.org (ISO is the brand of its
+  standards), edmunds.com (car makes), mercadolibre.com.ar,
+  shoplightspeed.com, unity.com, slq.qld.gov.au (real brands), docomo.ne.jp
+  (Japanese titles), dan.com (the products are domain names), thredup.com and
+  broadbandnow.com (simple names that repeat).
+- *Right attribute, unusual format* (a cleaning issue, not a ground-truth
+  error): ratings such as "4,7 рейтинг основан на…", prices with text
+  (omega.com, spb.ru), dates such as "Sat Aug 13 15:03:15 PDT 2022",
+  relative URLs, condition written as "New".
+
+**Effect on the results (version 1 = header-based, version 2 = corrected):**
+
+| | Version 1 | Version 2 |
+|---|---|---|
+| Evaluated columns | 1,124 | 1,113 |
+| True pairs | 29,268 | 28,118 |
+| Candidate filter PC (two passes) | 98.6% | **99.4%** |
+| 200 pairs: Mean(6) + RoleProfile + filter, F1_H / F1_M / MRR | 0.582 / 0.582 / 0.847 | 0.575 / 0.589 / **0.857** |
+| 200 pairs: Mean(6) + filter, F1_H / F1_M / MRR | 0.571 / 0.592 / 0.841 | 0.570 / 0.597 / 0.851 |
+| All 4,950 pairs, pairwise mutual top-1, F1 | 0.594 | **0.608** |
+| All pairs, brand recall (pairwise) | 31% | **36%** |
+| Shared schema (one-per-shop merge), F1 | 0.583 | 0.581 |
+| Shared schema, brand recall | 25% | 29% |
+
+- Part of the "lost" candidate pairs were ground-truth errors: with the
+  corrected answers the filter loses only 0.6% of the true pairs.
+- On all shop pairs, F1 rises from 0.594 to 0.608 and brand recall from 31% to
+  36%. Some of the brand errors were indeed errors of the markup.
+- On the 200-pair sample the overall F1 barely moves, and the brand recall of
+  the best combination even drops (29% → 26%) because the sample contains few
+  of the corrected shops. The differences on the sample are within its noise.
+- The main conclusion stands: brand remains the hard case. Correcting the
+  ground truth explains only a small part of it.
 
 ## 7. Shared schema
 
@@ -289,6 +370,9 @@ in the values, not the selection method.
 
 - The ground truth is derived from schema.org headers with four agreed rules;
   other rules (for example merging all IDs) give other numbers.
+- Sections 4–7 report the header-based ground truth (version 1); section 6
+  compares it with the corrected version 2. The audit rules flag only what
+  they check for; errors of other kinds may remain.
 - List cells keep only their first element.
 - Matcher experiments use one random sample of 200 shop pairs; the candidate
   filter numbers agree with the full data (98.2% vs 98.6% PC).
@@ -318,7 +402,9 @@ and `.venv` with `requirements.txt` (Python 3.13):
 
 ```shell
 python tools/wdc_prepare.py clean
-python tools/wdc_prepare.py groundtruth
+python tools/wdc_prepare.py groundtruth                  # version 2: with tools/wdc_gt_overrides.csv
+# python tools/wdc_prepare.py groundtruth --no-overrides # version 1: headers only
+python tools/wdc_gt_audit.py                             # flags suspicious columns for review
 python tools/wdc_candidates.py evaluate --analyze type2 --write type2
 
 python tools/wdc_scenarios.py build
@@ -335,5 +421,7 @@ python tools/wdc_scenarios.py run all-fast --jvm-arg=-Xmx8g
 .venv/bin/python tools/wdc_schema.py results/<run> --corpus all-opaque --readable all-readable
 ```
 
-All outputs are written to `datasets-local/wdc/` and `results/` (both
-git-ignored).
+For version 2 the corrected runs used the corpus names `v2-readable` and
+`v2-all-readable` (`--name`, and `--corpus v2-opaque --readable v2-readable` for
+`wdc_combine.py`). All outputs are written to `datasets-local/wdc/` and
+`results/` (both git-ignored).

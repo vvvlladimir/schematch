@@ -1,0 +1,19 @@
+table,column,new_attribute,reason
+tower.com,brand,creator,values are musicians (Byrd; Charlie); decided 2026-11-17
+pixels.com,brand.name,creator,values are artists (Lars Lentz - Website); decided 2026-11-17
+threadless.com,brand.name,creator,values are artists' shops; decided 2026-11-17
+creativemarket.com,brand.name,creator,values are designers and their shops; decided 2026-11-17
+udg.mx,brand.name,name,identical to the name column in all 100 rows; decided 2026-11-17
+revolve.com,description,category,values are product kinds (dress; top; jean); decided 2026-11-17
+kozaleathers.com,name,variant,values are size/colour variants (M / Turquoise Blue); decided 2026-11-17
+pp.ua,brand.name,_exclude,same long product titles as mpn and sku; broken markup; decided 2026-11-17
+pp.ua,mpn,_exclude,same long product titles as brand.name and sku; broken markup; decided 2026-11-17
+pp.ua,sku,_exclude,same long product titles as brand.name and mpn; broken markup; decided 2026-11-17
+elliman.com,brand.name,_exclude,values are a listing service (MLS); not a brand; decided 2026-11-17
+eltiempo.com,name,_exclude,news site: one constant value (El Tiempo) for the whole site; decided 2026-11-17
+eltiempo.com,description,_exclude,news site: one constant value for the whole site; decided 2026-11-17
+eltiempo.com,sku,_exclude,news site: home page URL in every row; decided 2026-11-17
+eltiempo.com,productid,_exclude,news site: one constant value for the whole site; decided 2026-11-17
+semana.com,name,_exclude,news site: one constant value (Semana) for the whole site; decided 2026-11-17
+semana.com,sku,_exclude,news site: store URL in every row; decided 2026-11-17
+semana.com,productid,_exclude,news site: one constant value for the whole site; decided 2026-11-17

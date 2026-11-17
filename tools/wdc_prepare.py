@@ -269,6 +269,19 @@ OFFER_PROPERTIES = {
 # them are recorded as related (1:n) and reported apart, not as true matches.
 RELATED_GROUPS = [{"price", "lowprice", "highprice"}]
 
+# Manual corrections after the plausibility audit (tools/wdc_gt_audit.py): the
+# header of some columns does not describe their values. Each row relabels one
+# column; EXCLUDE removes the column from every evaluation.
+DEFAULT_OVERRIDES = ROOT / "tools" / "wdc_gt_overrides.csv"
+EXCLUDE = "_exclude"
+
+
+def load_overrides(path: Path | None) -> dict[tuple[str, str], tuple[str, str]]:
+    if path is None:
+        return {}
+    with path.open(encoding="utf-8", newline="") as fh:
+        return {(r["table"], r["column"]): (r["new_attribute"], r["reason"]) for r in csv.DictReader(fh)}
+
 
 def shared_attribute(normalized: str) -> str:
     if normalized in EXPLICIT_MERGES:
@@ -285,16 +298,27 @@ def cmd_groundtruth(args: argparse.Namespace) -> None:
         sys.exit("Run 'clean' first.")
     out = args.output / "ground_truth"
     out.mkdir(parents=True, exist_ok=True)
+    overrides = load_overrides(None if args.no_overrides else args.overrides)
+    used = set()
     columns = []
     for path in sorted(src.glob("*.csv")):
         header, body = read_table(path)
         for c, h in enumerate(header):
             norm = normalize_header(h)
+            by_header = shared_attribute(norm)
+            attr, reason = overrides.get((path.stem, h), (by_header, ""))
+            if (path.stem, h) in overrides:
+                used.add((path.stem, h))
+            non_empty = int(any(r[c] for r in body))
             columns.append({
                 "table": path.stem, "column_index": c, "column": h, "normalized": norm,
-                "shared_attribute": shared_attribute(norm),
-                "non_empty": int(any(r[c] for r in body)),
+                "shared_attribute": attr, "header_attribute": by_header,
+                "override_reason": reason, "non_empty": non_empty,
+                "evaluated": int(non_empty and attr != EXCLUDE),
             })
+    unknown = set(overrides) - used
+    if unknown:
+        sys.exit(f"overrides for unknown columns: {sorted(unknown)}")
     with (out / "column_attributes.csv").open("w", encoding="utf-8", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(columns[0]))
         w.writeheader()
@@ -302,10 +326,11 @@ def cmd_groundtruth(args: argparse.Namespace) -> None:
 
     by_attr = defaultdict(list)
     for col in columns:
-        by_attr[col["shared_attribute"]].append(col)
+        if col["shared_attribute"] != EXCLUDE:
+            by_attr[col["shared_attribute"]].append(col)
     attr_rows = []
     for attr, cols in by_attr.items():
-        filled = [c for c in cols if c["non_empty"]]
+        filled = [c for c in cols if c["evaluated"]]
         tables = {c["table"] for c in filled}
         attr_rows.append({"shared_attribute": attr, "columns": len(cols),
                           "non_empty_columns": len(filled), "non_empty_tables": len(tables),
@@ -317,25 +342,29 @@ def cmd_groundtruth(args: argparse.Namespace) -> None:
         w.writerows(attr_rows)
 
     # Pair counts over non-empty columns of different tables.
-    filled = [c for c in columns if c["non_empty"]]
+    filled = [c for c in columns if c["evaluated"]]
     per_table = Counter(c["table"] for c in filled)
     total_pairs = (sum(per_table.values()) ** 2 - sum(n * n for n in per_table.values())) // 2
     true_pairs = 0
     for cols in by_attr.values():
-        t = Counter(c["table"] for c in cols if c["non_empty"])
+        t = Counter(c["table"] for c in cols if c["evaluated"])
         true_pairs += (sum(t.values()) ** 2 - sum(n * n for n in t.values())) // 2
     related_pairs = 0
     for group in RELATED_GROUPS:
         members = sorted(group)
         for i, a in enumerate(members):
             for b in members[i + 1:]:
-                ta = Counter(c["table"] for c in by_attr.get(a, []) if c["non_empty"])
-                tb = Counter(c["table"] for c in by_attr.get(b, []) if c["non_empty"])
+                ta = Counter(c["table"] for c in by_attr.get(a, []) if c["evaluated"])
+                tb = Counter(c["table"] for c in by_attr.get(b, []) if c["evaluated"])
                 related_pairs += sum(na * nb for x, na in ta.items() for y, nb in tb.items() if x != y)
     singletons = sum(1 for r in attr_rows if r["non_empty_tables"] == 1)
     print(f"Ground truth written to {out}")
+    changed = [c for c in columns if c["override_reason"]]
+    print(f"  manual overrides applied      {len(changed)} "
+          f"({sum(c['shared_attribute'] == EXCLUDE for c in changed)} excluded, "
+          f"{sum(c['shared_attribute'] != EXCLUDE for c in changed)} relabelled)")
     print(f"  shared attributes             {len(attr_rows)} ({singletons} in only one table)")
-    print(f"  non-empty columns             {len(filled)}")
+    print(f"  evaluated columns             {len(filled)} (non-empty, not excluded)")
     print(f"  cross-table pairs (non-empty) {total_pairs}")
     print(f"  true pairs                    {true_pairs}")
     print(f"  related 1:n pairs (reported apart) {related_pairs}")
@@ -354,6 +383,10 @@ def main() -> None:
     h.add_argument("--show", type=int, default=25, help="merge candidates to print")
     g = sub.add_parser("groundtruth", help="apply the ground truth rules and write the answers")
     g.add_argument("--show", type=int, default=20, help="attributes to print")
+    g.add_argument("--overrides", type=Path, default=DEFAULT_OVERRIDES,
+                   help="manual corrections (table, column, new_attribute, reason)")
+    g.add_argument("--no-overrides", action="store_true",
+                   help="header-based ground truth only (version 1 of the report)")
     args = p.parse_args()
     {"clean": cmd_clean, "headers": cmd_headers, "groundtruth": cmd_groundtruth}[args.command](args)
 

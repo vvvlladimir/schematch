@@ -78,7 +78,9 @@ def load_tables() -> dict[str, dict]:
         with path.open(encoding="utf-8", newline="") as fh:
             rows = list(csv.reader(fh))
         header, body = rows[0], rows[1:]
-        keep = [c for c in range(len(header)) if any(c < len(r) and r[c] for r in body)]
+        # Drop empty columns and columns excluded from scoring (tools/wdc_gt_overrides.csv).
+        keep = [c for c in range(len(header))
+                if any(c < len(r) and r[c] for r in body) and attrs[path.stem][c] != "_exclude"]
         if len(set(header[c] for c in keep)) != len(keep):
             sys.exit(f"duplicate column names in {path.name}")
         tables[path.stem] = {
@@ -86,7 +88,7 @@ def load_tables() -> dict[str, dict]:
             "header": [header[c] for c in keep],
             "rows": [[r[c] if c < len(r) else "" for c in keep] for r in body],
             "attributes": [attrs[path.stem][c] for c in keep],
-            "dropped_empty": len(header) - len(keep),
+            "dropped_empty": len(header) - len(keep),  # empty or excluded
         }
     return tables
 

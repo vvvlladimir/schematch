@@ -51,7 +51,8 @@ def load(base: Path) -> list[Column]:
         header, body = rows[0], rows[1:]
         for c, name in enumerate(header):
             values = [r[c] for r in body if c < len(r) and r[c]]
-            if values:  # empty columns cannot be matched from values
+            # Empty columns cannot be matched from values; excluded ones are not scored.
+            if values and attrs[(path.stem, c)] != "_exclude":
                 cols.append(Column(len(cols), path.stem, name, attrs[(path.stem, c)], values))
     return cols
 

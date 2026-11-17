@@ -68,7 +68,7 @@ class Columns:
             for c, name in enumerate(header):
                 column = tuple(r[c] if c < len(r) else "" for r in body)
                 values = [v for v in column if v]
-                if not values:
+                if not values or attrs[(table, c)] == "_exclude":
                     continue
                 idx = len(self.ids)
                 self.ids.append((table, name))
