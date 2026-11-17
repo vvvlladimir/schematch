@@ -446,10 +446,62 @@ and `offers.sku`. Both count as correct partners (n:1).
 | True pairs | 29,268 |
 | Related 1:n pairs (price/lowprice/highprice) | 3,469 |
 
-The PC/RR numbers in step 4 were measured on the raw data before these rules
-and must be measured again on the cleaned tables.
+The PC/RR numbers in the step 4 description above come from an early prototype
+on the raw data. The measured numbers on the cleaned tables follow below.
+
+### Step 3: deferred to step 5
+
+Candidate selection never reads column names, only values, so names do not
+need to be hidden to measure it. Names are hidden with `opaque-tables` when the
+Schematch scenarios are written (step 5), because the matchers do see them.
+
+### Step 4: implemented in `tools/wdc_candidates.py`
+
+```shell
+python tools/wdc_candidates.py evaluate --analyze type2 --write type2
+```
+
+Outputs in `datasets-local/wdc/candidates/`: `reduction_report.csv` (PC/RR of
+every method), `lost_<method>.csv` (every lost true pair with sample values) and
+`candidates.csv` (the selected candidate pairs).
+
+PC and RR are computed over non-empty columns only: 624,076 cross-table pairs,
+29,268 true pairs. "PC 1:n" is the share of related price/lowprice/highprice
+pairs that survive.
+
+| Method | Candidates | PC | RR | PC 1:n |
+|---|---|---|---|---|
+| Type blocking, one pass | 153,704 | 92.8% | 75.4% | 100% |
+| **Type blocking, two passes (chosen)** | **177,736** | **98.6%** | **71.5%** | **100%** |
+| Type blocking, three passes | 206,139 | 98.8% | 67.0% | 100% |
+| Three passes + top-5 per table | 195,018 | 98.2% | 68.8% | 98.9% |
+| Three passes + top-3 per table | 158,356 | 95.5% | 74.6% | 91.2% |
+| Three passes + top-2 per table | 124,164 | 91.5% | 80.1% | 76.1% |
+| Three passes + top-1 per table | 74,783 | 79.7% | 88.0% | 56.0% |
+| Inverted index on value tokens | 118,066 | 61.9% | 81.1% | 36.6% |
+| MinHash + LSH (b=16, r=4) | 5,351 | 12.3% | 99.1% | 0.1% |
+| Three passes + size filter | 151,719 | 87.9% | 75.7% | 67.5% |
+
+**Why two passes:** the third pass adds 0.2 points of PC for 28,000 more
+candidates. Top-k on the cheap value profile costs about 3 points of PC for
+every 3 points of RR. That trade is not worth it before the precise matchers
+run; a top-k on real matcher scores can follow later.
+
+**Loss analysis (step 4.5).** The first run on cleaned data kept 94.2%. Three
+fixes to the column-type rules raised it to 98.6%:
+
+| Lost before | Cause | Fix |
+|---|---|---|
+| availability, itemcondition | `InStock`, `in_stock`, `NewCondition` without the `schema.org/` prefix were typed as text | recognize the schema.org enumeration members in any spelling |
+| pricevaliduntil | dates such as `2023/10/12` and `Oct. 21, 2023` | broader date patterns |
+| sku, mpn, productid | long codes (`artworkid[…]-productid[…]`, hashes) were typed as text | codes up to 80 characters, including `[ ] : \|` |
+| brand | three-letter brands (`ESR`) were typed as currency | currency only for ISO 4217 codes |
+
+The remaining 420 lost pairs are mostly data errors or free text that no type
+rule should catch: an `sku` that holds the shop's home page URL, an image given
+as a URL in one shop and as a file name in another, or a condition written as
+`New` / `Новый`.
 
 ## 8. Prototype
 
-The numbers in step 4 come from a standard-library Python prototype that has
-not been added to the repository yet. It will be added as part of deliverable 2.
+The early prototype was replaced by `tools/wdc_candidates.py`.
