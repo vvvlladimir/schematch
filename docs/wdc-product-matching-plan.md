@@ -374,7 +374,82 @@ We measure on two levels, as the course requires.
 Every stage ends with a checkable result, so it is always clear where we are
 and what works.
 
-## 7. Prototype
+## 7. Status and decisions
+
+### Step 0: done
+
+Maven 3.10.1 was installed with Homebrew. It brings its own JDK 27; build with
+JDK 21 instead:
+
+```shell
+export JAVA_HOME=$(/usr/libexec/java_home -v 21)
+mvn test compile dependency:build-classpath -Dmdep.outputFile=target/cp.txt
+python tools/run_schematch.py
+```
+
+Maven 3.10 defaults to Surefire 3.6, which refuses to run because JUnit 4.11
+arrives transitively on the test classpath. `pom.xml` therefore pins
+`maven-surefire-plugin` 3.2.5. With that, 166 tests run (0 failures, 8 skipped)
+and the bundled demo produces its matrix.
+
+### Steps 1 and 2: implemented in `tools/wdc_prepare.py`
+
+```shell
+python tools/wdc_prepare.py clean        # step 1: cleaned copies + cleaning_report.csv
+python tools/wdc_prepare.py headers      # header_review.csv for manual review
+python tools/wdc_prepare.py groundtruth  # step 2: column_attributes.csv, attributes.csv
+```
+
+Outputs go to `datasets-local/wdc/` (git-ignored). Input files are not modified.
+
+**Cleaning rules (step 1):**
+
+- BOM removed from the first header.
+- JSON list cells (`["31.70", "31.16"]`) keep their first non-empty element, so
+  each row still describes one product. 3,341 cells.
+- `undefined`, `null`, `none`, `nan`, `n/a`, `na`, `-` become empty. 233 cells.
+- Numbers are normalized only in columns where at least 80% of the values parse
+  as numbers, so codes in ID columns are never rewritten. Currency symbols and
+  thousands separators are removed, a decimal comma becomes a dot, and
+  scientific notation is expanded (`2.4E1` → `24`). Plain notation keeps its
+  digits (`31.70`, `003489`). 1,489 cells.
+- Columns that WDC split by JSON shape (`offers.price` / `offers[].price`) are
+  joined into one column, but only when no row fills more than one of them.
+  205 columns were joined; no group overlapped.
+- Prices with free text, such as `77,572 (税込) (税抜価格 ¥70,520)`, are left
+  unchanged for now (see step 4.5).
+
+**Ground truth rules (step 2), agreed on 2026-11-17:**
+
+1. `brand` and `brand.name` are one attribute, "brand".
+2. `sku`, `offers.sku` and `url.sku` are one attribute. `productid` and `mpn`
+   stay separate attributes.
+3. `offers.X` and `X` are one attribute for offer and product properties that
+   schema.org allows on both: price, pricecurrency, lowprice, highprice,
+   pricevaliduntil, availability, itemcondition, category, offercount, mpn,
+   gtin/gtin8/12/13/14, isbn. Names of other objects (`offers.name`,
+   `url.name`, `brand.name` as a product name) stay separate.
+4. `price`, `lowprice` and `highprice` are three attributes. Pairs between them
+   are counted as related 1:n pairs and reported apart, not as true matches.
+
+Some tables still contain two columns of the same attribute, for example `sku`
+and `offers.sku`. Both count as correct partners (n:1).
+
+**Numbers after cleaning:**
+
+| Fact | Value |
+|---|---|
+| Columns | 1,243 (119 empty) |
+| Non-empty columns | 1,124 |
+| Shared attributes | 155 (58 occur in only one table) |
+| Cross-table column pairs (non-empty) | 624,076 |
+| True pairs | 29,268 |
+| Related 1:n pairs (price/lowprice/highprice) | 3,469 |
+
+The PC/RR numbers in step 4 were measured on the raw data before these rules
+and must be measured again on the cleaned tables.
+
+## 8. Prototype
 
 The numbers in step 4 come from a standard-library Python prototype that has
 not been added to the repository yet. It will be added as part of deliverable 2.

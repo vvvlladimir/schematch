@@ -208,6 +208,12 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+            <!-- Pinned: Surefire 3.6+ (default in Maven 3.10) rejects the transitive JUnit 4.11 on the test classpath. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+            </plugin>
         </plugins>
     </build>
 </project>
