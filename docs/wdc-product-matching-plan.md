@@ -545,6 +545,43 @@ and without names; the small F1_H differences come from tie-breaking after the
 column permutation. The label matcher confirms that visible names give the
 answer away, so the hidden-name corpus is the one to report.
 
+### Steps 4, 7 and 8 on Schematch output: `tools/wdc_combine.py`
+
+```shell
+.venv/bin/python tools/wdc_combine.py results/<run> --corpus opaque
+```
+
+The script reads the raw matrices of a run (`paper_evaluation/input.jsonl`),
+adds combined and filtered matrices, and evaluates everything again with
+`tools/evaluate_paper.py`. Output: `results/<run>/wdc_combined/`.
+
+- **Combiner:** the mean of min-max normalized matrices, per scenario.
+- **Candidate filter:** two-pass type blocking from `tools/wdc_candidates.py`.
+  Types are computed from the values of the scenario tables, so the filter also
+  works on the hidden-name corpus. Non-candidate cells are set to 0.
+- On the 200 scenarios the filter keeps 1,129 of 1,150 true pairs (PC 98.2%)
+  and removes 17,926 of 24,973 cells (RR 71.8%).
+
+**Results, names hidden:**
+
+| Method | F1_H | F1_M | MRR |
+|---|---|---|---|
+| **Mean of all six value matchers + candidate filter** | **0.571** | **0.592** | **0.841** |
+| Mean of CharDistribution, KS, PatternProfile + filter | 0.527 | 0.551 | 0.821 |
+| Mean of all six value matchers | 0.506 | 0.566 | 0.812 |
+| CharDistributionMatcher + filter | 0.498 | 0.504 | 0.789 |
+| CharDistributionMatcher (best single matcher) | 0.435 | 0.467 | 0.753 |
+
+The candidate filter does more than save work: it removes pairs of
+incompatible types that the matchers wrongly scored high, so quality rises as
+well. Combining all six matchers beats the three best ones; the weaker matchers
+still contribute independent evidence.
+
+**Selector (step 8):** for the best method, mutual top-1 and partial Hungarian
+(penalty 0.3) both reach F1 0.592: precision 0.61, recall 0.60. A plain 1:1
+Hungarian assignment reaches F1 0.571 (precision 0.52, recall 0.66), because
+it also assigns columns that have no partner.
+
 ## 8. Prototype
 
 The early prototype was replaced by `tools/wdc_candidates.py`.
