@@ -31,6 +31,20 @@ def compatible(a: str, b: str) -> bool:
     return a == b or wc.PASS2.get(a, a) == wc.PASS2.get(b, b)
 
 
+def filtered_scores(run: Path, cols):
+    """Yield (scenario, source column ids, target column ids, combined matrix) per shop pair:
+    the mean of all matchers, with pairs removed by the two-pass type blocker set to 0."""
+    index = {f"{safe_name(c.table)}.{c.name}": c.idx for c in cols}
+    for scenario, sources, targets, mats in wdc_matches.scenarios(run):
+        gi, gj = [index[s] for s in sources], [index[t] for t in targets]
+        m = mats[wdc_matches.MEAN].copy()
+        for i, a in enumerate(gi):
+            for j, b in enumerate(gj):
+                if not compatible(cols[a].type, cols[b].type):
+                    m[i, j] = 0.0
+        yield scenario, gi, gj, m
+
+
 def constrained_merge(edges, table_of: list[str]) -> list[int]:
     """Greedy merge along edges (score, i, j), strongest first. Two clusters are
     joined only if they share no shop."""
@@ -62,15 +76,8 @@ def main() -> None:
 
     cols = wc.load()
     wc.profile(cols)
-    index = {f"{safe_name(c.table)}.{c.name}": c.idx for c in cols}
     edges, pairs = [], 0
-    for _, sources, targets, mats in wdc_matches.scenarios(args.run):
-        gi, gj = [index[s] for s in sources], [index[t] for t in targets]
-        m = mats[wdc_matches.MEAN].copy()
-        for i, a in enumerate(gi):
-            for j, b in enumerate(gj):
-                if not compatible(cols[a].type, cols[b].type):
-                    m[i, j] = 0.0
+    for _, gi, gj, m in filtered_scores(args.run, cols):
         for i, j in wdc_matches.mutual_top1(m):
             edges.append((m[i, j], gi[i], gj[j]))
         pairs += 1

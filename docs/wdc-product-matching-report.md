@@ -2,7 +2,8 @@
 
 Matching the 100 product tables in `vorbereitete_tabellen/` with Schematch,
 following the Data Engineering practical (Einführung, WS 2026/27): search-space
-reduction, pairwise matching and clustering (step 1 of the "Vorgehensweise").
+reduction, pairwise matching, clustering and 1:n/n:m correspondences (step 1
+of the "Vorgehensweise").
 
 ## 1. Summary
 
@@ -20,6 +21,10 @@ reduction, pairwise matching and clustering (step 1 of the "Vorgehensweise").
 - **Clustering:** the pairwise correspondences of the combined matcher, with
   two-pass type blocking as prefilter, form 59 clusters, i.e. attributes of a
   shared Product schema.
+- **1:n and n:m:** selection MaxDelta + Both (as in COMA) keeps near-best
+  partners and yields 1,098 1:n, 1,029 n:1 and 383 n:m correspondences
+  (δ = 0.05). The most frequent pattern is the expected price range:
+  `offers.price` ↔ `offers.lowprice` + `offers.highprice`.
 
 ## 2. Data and cleaning
 
@@ -49,6 +54,7 @@ Empty columns are left out: there is nothing to match from.
 ```
 clean → scenarios (all shop pairs) → Schematch matchers → blocker evaluation
                                                         → clustering (shared schema)
+                                                        → 1:n / n:m correspondences
 ```
 
 | Step | Tool |
@@ -58,6 +64,7 @@ clean → scenarios (all shop pairs) → Schematch matchers → blocker evaluati
 | Blockers and their evaluation | `tools/wdc_candidates.py` |
 | Reading matcher outputs, mutual top-1 | `tools/wdc_matches.py` |
 | Clustering | `tools/wdc_schema.py` |
+| 1:n and n:m correspondences | `tools/wdc_complex.py` |
 
 **Matchers** (fast Schematch first-line matchers, no Python server, no model):
 one label matcher (`LevenshteinMatcher`, on the column names) and six instance
@@ -164,7 +171,47 @@ Clusters of fixed formats (currency, availability, validity date) are clean.
 Brand is split over two clusters, and the product identifiers (sku, mpn, gtin)
 mix, because by their values alone they are hard to tell apart.
 
-## 6. Limitations and open points
+## 6. 1:n and n:m correspondences
+
+Mutual top-1 gives every column at most one partner, so it yields only 1:1
+correspondences. To derive 1:n and n:m, the selection is widened as in COMA
+(selection *MaxDelta + Both*; Do & Rahm 2002, Massmann et al. 2011): on the
+combined matrix with the type-blocker prefilter, a pair is kept when its score
+is within a relative distance δ of the best score of its row **and** of its
+column. δ = 0 is exactly mutual top-1. The kept pairs of a shop pair form a
+bipartite graph; each connected component is one correspondence, typed by its
+number of columns on each side.
+
+| δ | 1:1 | 1:n | n:1 | n:m | Columns in 1:n/n:1/n:m |
+|---|---|---|---|---|---|
+| 0 | 28,356 | 92 | 74 | 0 | 498 |
+| 0.02 | 27,796 | 511 | 526 | 89 | 3,531 |
+| **0.05** | **26,942** | **1,098** | **1,029** | **383** | **8,369** |
+| 0.1 | 24,937 | 1,838 | 1,755 | 1,190 | 17,464 |
+| 0.2 | 18,847 | 2,706 | 2,542 | 3,735 | 39,861 |
+
+At δ = 0 the few complex correspondences are ties (columns with identical
+values). From δ = 0.1 the n:m groups grow quickly and mix unrelated columns;
+δ = 0.05 is used. Most frequent patterns at δ = 0.05 (number of shop pairs):
+
+| Shop pairs | Pattern |
+|---|---|
+| 88 | `aggregaterating.reviewcount` ↔ `aggregaterating.ratingcount` + `aggregaterating.reviewcount` |
+| 65 | `offers.price` ↔ `offers.lowprice` + `offers.highprice` |
+| 46 | `offers.availability` ↔ `offers.availability` + `offers.itemcondition` |
+| 38 | `offers.price` ↔ `offers.lowprice` + `offers.highprice` + `offers.price` |
+| 25 | `description` ↔ `description` + `review.description` |
+| 22 | `name` ↔ `name` + `brand.name` |
+| 17 | `sku` ↔ `sku` + `productid` |
+| 16 | `offers.offercount` ↔ `image.height` + `image.width` |
+
+The price range (one price ↔ low and high price), the two review counters and
+the product identifiers are meaningful 1:n correspondences. Others are
+confusions of similar values: availability and condition are both schema.org
+enumerations, and small integers (offer count, image size) look alike. All
+correspondences are written to `results/<run>/complex_correspondences.csv`.
+
+## 7. Limitations and open points
 
 - The reference for PC is each matcher's own decisions, not the truth: PC
   measures how much a blocker changes a matcher's result, not whether that
@@ -172,8 +219,9 @@ mix, because by their values alone they are hard to tell apart.
   positive score, so weak matchers produce many doubtful correspondences.
 - Only the WDC Product corpus was used, not WikiDBs, SchemaPile or
   SportsTables.
-- Only 1:1 correspondences are derived; 1:n and n:m correspondences
-  (e.g. `price` vs `lowprice`/`highprice`) are not.
+- 1:n/n:m correspondences are only *candidates*: δ is chosen by inspection,
+  not tuned, and the selection cannot tell a real 1:n (price range) from two
+  similar-looking columns (availability, condition).
 - Step 2 of the "Vorgehensweise" (dependencies between corresponding columns:
   co-occurrence, encodings, merges, units, naming rules) is not done.
 - Blocking and clustering are Python tools around Schematch, not part of the
@@ -182,7 +230,7 @@ mix, because by their values alone they are hard to tell apart.
   attributes, on entropy, on embeddings of value sets; sorted neighbourhood
   and canopy clustering.
 
-## 7. Reproduction
+## 8. Reproduction
 
 From the repository root, with JDK 21 (`export JAVA_HOME=$(/usr/libexec/java_home -v 21)`),
 a built Schematch (`mvn -DskipTests compile dependency:build-classpath -Dmdep.outputFile=target/cp.txt`)
@@ -195,6 +243,7 @@ python tools/wdc_scenarios.py config
 python tools/wdc_scenarios.py run --jvm-arg=-Xmx8g
 .venv/bin/python tools/wdc_candidates.py evaluate results/<run>
 .venv/bin/python tools/wdc_schema.py results/<run>
+.venv/bin/python tools/wdc_complex.py results/<run>
 ```
 
 Outputs are written to `datasets-local/wdc/` and `results/` (both git-ignored).
