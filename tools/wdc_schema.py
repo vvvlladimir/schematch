@@ -57,7 +57,7 @@ class Columns:
         self.attribute = []
         self.type = []
         self.table_index = {}
-        self.by_values = {}    # (table, value tuple) -> [column index, ...]
+        self.by_name = {}      # (safe table, column name) -> column index
         raw_profiles = []
         for path in sorted((WDC / "clean").glob("*.csv")):
             table = path.stem
@@ -75,7 +75,7 @@ class Columns:
                 self.attribute.append(attrs[(table, c)])
                 self.type.append(wc.column_type(values))
                 self.table_index.setdefault(table, []).append(idx)
-                self.by_values.setdefault((wcomb.wc_safe(table), column), []).append(idx)
+                self.by_name[(wcomb.wc_safe(table), name)] = idx
                 raw_profiles.append(profiles[column])
         p = np.array(raw_profiles)
         sd = p.std(axis=0)
@@ -97,19 +97,11 @@ def read_matrix(path: Path):
 
 
 def scenario_columns(cols: Columns, corpus: str, scenario: str, side: str, safe_table: str):
-    """Map hidden 'table.column' labels of one side to global column indices by values."""
-    path = next((WDC / "scenarios" / corpus / "wdc" / scenario / side).glob("*.csv"))
-    with path.open(encoding="utf-8", newline="") as fh:
-        rows = list(csv.reader(fh))
-    header, body = rows[0], rows[1:]
-    pools = {}
-    out = {}
-    for c, name in enumerate(header):
-        column = tuple(r[c] if c < len(r) else "" for r in body)
-        key = (safe_table, column)
-        pool = pools.setdefault(key, list(cols.by_values[key]))
-        out[f"{path.stem}.{name}"] = pool.pop(0)
-    return out
+    """Map hidden 'table.column' labels of one side to global column indices via the key file."""
+    hidden_table = next((WDC / "scenarios" / corpus / "wdc" / scenario / side).glob("*.csv")).stem
+    return {label: cols.by_name[(safe_table, name)]
+            for label, name in wcomb.load_keys(corpus)[scenario].items()
+            if label.startswith(hidden_table + ".")}
 
 
 def compatible(a: str, b: str) -> bool:

@@ -93,31 +93,29 @@ def masked(m, mask):
 
 # --------------------------------------------------------- error analysis --
 
-def read_table(path: Path):
-    with path.open(encoding="utf-8", newline="") as fh:
-        rows = list(csv.reader(fh))
-    header, body = rows[0], rows[1:]
-    cols = [tuple(r[c] if c < len(r) else "" for r in body) for c in range(len(header))]
-    return header, cols
+_KEYS: dict[str, dict[str, dict[str, str]]] = {}
+
+
+def load_keys(corpus: str) -> dict[str, dict[str, str]]:
+    """{scenario: {'hidden_table.hidden_column': readable column}} from the key file
+    written by `tools/wdc_scenarios.py hide` (or `keys`)."""
+    if corpus not in _KEYS:
+        path = SCENARIOS / "keys" / f"{corpus}.csv"
+        if not path.is_file():
+            sys.exit(f"{path} missing; run: python tools/wdc_scenarios.py keys --name <readable corpus>")
+        keys = defaultdict(dict)
+        with path.open(encoding="utf-8", newline="") as fh:
+            for r in csv.DictReader(fh):
+                keys[r["scenario"]][f"{r['hidden_table']}.{r['hidden_column']}"] = r["column"]
+        _KEYS[corpus] = dict(keys)
+    return _KEYS[corpus]
 
 
 def readable_names(corpus: str, scenario: str, readable: str = "readable") -> dict[str, str]:
-    """Map 'table.column' labels of a hidden-name scenario to readable column names
-    by identical column values (names were hashed, values were not touched)."""
+    """Map 'table.column' labels of a hidden-name scenario to readable column names."""
     if corpus == readable:
         return {}
-    out = {}
-    for side in ("source", "target"):
-        hidden = next((SCENARIOS / corpus / "wdc" / scenario / side).glob("*.csv"))
-        plain = next((SCENARIOS / readable / "wdc" / scenario / side).glob("*.csv"))
-        hh, hc = read_table(hidden)
-        ph, pc = read_table(plain)
-        pool = defaultdict(list)
-        for name, values in zip(ph, pc):
-            pool[values].append(name)
-        for name, values in zip(hh, hc):
-            out[f"{hidden.stem}.{name}"] = pool[values].pop(0)
-    return out
+    return load_keys(corpus)[scenario]
 
 
 def mutual_top1(scores):

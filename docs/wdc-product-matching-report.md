@@ -423,5 +423,10 @@ python tools/wdc_scenarios.py run all-fast --jvm-arg=-Xmx8g
 
 For version 2 the corrected runs used the corpus names `v2-readable` and
 `v2-all-readable` (`--name`, and `--corpus v2-opaque --readable v2-readable` for
-`wdc_combine.py`). All outputs are written to `datasets-local/wdc/` and
+`wdc_combine.py`). `hide` also writes the key file
+`datasets-local/wdc/scenarios/keys/<opaque corpus>.csv` (hidden table and column
+→ readable name and position), kept outside the corpus Schematch reads;
+`wdc_combine.py --analyze` and `wdc_schema.py` read names from it. For an
+existing opaque corpus: `python tools/wdc_scenarios.py keys --name <readable corpus>`.
+All outputs are written to `datasets-local/wdc/` and
 `results/` (both git-ignored).

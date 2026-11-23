@@ -5,7 +5,8 @@ Step 5 of docs/wdc-product-matching-plan.md. Needs the outputs of
 tools/wdc_prepare.py (clean + groundtruth).
 
     python tools/wdc_scenarios.py build                  # 200 sampled shop pairs, readable names
-    python tools/wdc_scenarios.py hide                   # opaque names + permuted columns
+    python tools/wdc_scenarios.py hide                   # opaque names + permuted columns + keys
+    python tools/wdc_scenarios.py keys                   # (re)write keys of an existing opaque corpus
     python tools/wdc_scenarios.py config fast-opaque --corpus opaque
     python tools/wdc_scenarios.py run fast-opaque        # needs a compiled Schematch
 
@@ -19,6 +20,12 @@ All 4,950 shop pairs for step 9 (tools/wdc_schema.py):
 Everything is written below datasets-local/wdc/ (git-ignored). The active
 configuration in src/main/resources is not touched: `run` puts the generated
 configuration directory first on the classpath.
+
+Keys: `hide` also writes scenarios/keys/<opaque corpus>.csv, the exact map from
+each hidden column (scenario, side, hidden table, hidden column, position) to its
+readable table, column and position. It lies outside the opaque corpus, so
+Schematch never sees it; tools/wdc_combine.py and tools/wdc_schema.py use it to
+print readable names and to score per attribute.
 """
 from __future__ import annotations
 
@@ -34,11 +41,17 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from dataset_support import transforms  # noqa: E402
+
 csv.field_size_limit(sys.maxsize)
 
 ROOT = Path(__file__).resolve().parent.parent
 WDC = ROOT / "datasets-local" / "wdc"
 SCENARIOS = WDC / "scenarios"
+KEYS = SCENARIOS / "keys"
+KEY_FIELDS = ["scenario", "side", "hidden_table", "hidden_column", "position",
+              "table", "column", "readable_position"]
 CONFIGS = WDC / "config"
 DATASET = "wdc"
 DEFAULT_SEED = 20261117
@@ -167,6 +180,59 @@ def cmd_hide(args) -> None:
     subprocess.run(tool + ["permute", "--input", str(tmp), "--output", str(dst)], check=True)
     shutil.rmtree(tmp)
     print(f"opaque corpus written to {dst}")
+    write_keys(args.name, args.seed)
+
+
+def key_path(opaque: str) -> Path:
+    return KEYS / f"{opaque}.csv"
+
+
+def build_keys(readable: str, seed) -> list[list]:
+    """Recompute the hidden names with the salts `hide` used; positions come from the
+    opaque headers. Every hidden column must decode to exactly one readable column
+    with identical values, otherwise this fails."""
+    src_root, dst_root = SCENARIOS / readable / DATASET, SCENARIOS / hidden_name(readable) / DATASET
+    scen_names = sorted(d.name for d in src_root.iterdir() if d.is_dir())
+    if scen_names != sorted(d.name for d in dst_root.iterdir() if d.is_dir()):
+        sys.exit(f"{src_root} and {dst_root} hold different scenarios")
+    rows = []
+    for name in scen_names:
+        for side in transforms.SIDES:
+            _, tmap, cmap, cols = transforms.side_maps(src_root / name, DATASET, side, str(seed))
+            (table, columns), = cols.items()
+            decode = {cmap[c]: c for c in columns}
+            hidden = dst_root / name / side / f"{tmap[table]}.csv"
+            if not hidden.is_file():
+                sys.exit(f"{hidden} missing: wrong --seed?")
+            h_header, h_cols = read_columns(hidden)
+            r_header, r_cols = read_columns(src_root / name / side / f"{table}.csv")
+            if sorted(h_header) != sorted(decode):
+                sys.exit(f"{hidden}: hidden names do not decode with this seed")
+            for pos, hc in enumerate(h_header):
+                column = decode[hc]
+                rpos = r_header.index(column)
+                if h_cols[pos] != r_cols[rpos]:
+                    sys.exit(f"{hidden}: values of {column} differ")
+                rows.append([name, side, tmap[table], hc, pos, table, column, rpos])
+    return rows
+
+
+def read_columns(path: Path):
+    with path.open(encoding="utf-8", newline="") as fh:
+        rows = list(csv.reader(fh))
+    header, body = rows[0], rows[1:]
+    return header, [tuple(r[c] if c < len(r) else "" for r in body) for c in range(len(header))]
+
+
+def write_keys(readable: str, seed) -> None:
+    rows = build_keys(readable, seed)
+    path = key_path(hidden_name(readable))
+    write_csv(path, KEY_FIELDS, rows)
+    print(f"{len(rows)} keys written to {path}")
+
+
+def cmd_keys(args) -> None:
+    write_keys(args.name, args.seed)
 
 
 def yaml_docs(entries) -> str:
@@ -240,6 +306,9 @@ def main() -> None:
     h = sub.add_parser("hide", help="opaque table/column names and permuted column order")
     h.add_argument("--name", default="readable", help="readable corpus to hide")
     h.add_argument("--seed", type=int, default=DEFAULT_SEED)
+    k = sub.add_parser("keys", help="write the hidden -> readable key file of an existing opaque corpus")
+    k.add_argument("--name", default="readable", help="readable corpus the opaque one was made from")
+    k.add_argument("--seed", type=int, default=DEFAULT_SEED)
     c = sub.add_parser("config", help="write a Schematch configuration directory")
     c.add_argument("name")
     c.add_argument("--corpus", default="opaque", help="corpus name, e.g. opaque or all-opaque")
@@ -252,7 +321,7 @@ def main() -> None:
     r.add_argument("name")
     r.add_argument("--jvm-arg", action="append", default=[])
     args = p.parse_args()
-    {"build": cmd_build, "hide": cmd_hide, "config": cmd_config, "run": cmd_run}[args.command](args)
+    {"build": cmd_build, "hide": cmd_hide, "keys": cmd_keys, "config": cmd_config, "run": cmd_run}[args.command](args)
 
 
 if __name__ == "__main__":
