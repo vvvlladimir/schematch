@@ -1,43 +1,31 @@
 # Report: Schema matching of 100 web-shop product tables
 
-This report summarizes the matching of the 100 product tables in
-`vorbereitete_tabellen/` with Schematch, with a focus on search-space reduction
-("Suchraumreduzierung") from the Data Engineering course. The step-by-step plan,
-commands and intermediate decisions are in the
-[matching plan](wdc-product-matching-plan.md).
+Matching the 100 product tables in `vorbereitete_tabellen/` with Schematch,
+following the Data Engineering practical (Einführung, WS 2026/27): search-space
+reduction, pairwise matching and clustering (step 1 of the "Vorgehensweise").
 
 ## 1. Summary
 
-- **Task:** find which columns of 100 shops mean the same thing, and build one
-  shared Product schema. Column names were hidden for every measured result.
-- **Search-space reduction works and pays twice.** Two-pass type blocking keeps
-  98.6% of the true column pairs and removes 71.5% of all comparisons. Applied
-  before the final decision, it also *raises* quality (F1 0.506 → 0.571),
-  because it removes pairs that matchers wrongly scored high.
-- **Simple matchers suffice; a language model is not needed.** The best result
-  comes from six fast Schematch value matchers plus a small "role profile"
-  matcher of nine numbers per column (F1_H 0.582, MRR 0.847 on 200 shop pairs).
-  The role profile alone is the strongest single matcher.
-- **Formats are solved, meaning is not.** Currency (100% recall), availability
-  (95%) and dates (96%) are found almost always. Brand (29%) and product IDs
-  (sku 26%, mpn 0%) are the hard cases.
-- **Shared schema:** 4,950 pairwise decisions were turned into 65 consistent
-  attributes at about the same quality (F1 0.583 vs 0.594 pairwise). The
-  holistic step did not fix brand: by values alone, brands look like categories
-  or colours.
-- **The ground truth was corrected.** A plausibility audit flagged 37 columns;
-  18 had a header that did not describe their values (site names, artists,
-  product titles under `brand`) and were relabelled or excluded. With the
-  corrected answers the filter keeps 99.4% of the true pairs and the pairwise
-  F1 over all shop pairs rises from 0.594 to 0.608. Unless noted otherwise, the
-  numbers in sections 4–7 are those of the header-based version 1 (section 6).
+- **Data:** 100 web-shop tables from the WDC Schema.org Table Corpus 2023
+  (class Product), 1,124 non-empty columns, 624,076 cross-table column pairs.
+- **No ground truth.** As proposed on slide 13, all matchers were run on all
+  pairs (4,950 shop pairs, about 30 seconds); the correspondences each matcher
+  selects serve as the reference for evaluating the blockers.
+- **Blockers:** eight blockers from the course ideas were compared. Two-pass
+  type blocking removes 71.5% of all pairs and keeps 91–99% of the
+  correspondences of four of the seven matchers (95.8% of the combined
+  matcher). It suits KolmogorovSmirnov less (74%) and PMF and ValueShapeRole
+  not at all (38–43%). Token-based blockers (inverted index, MinHash/LSH) are
+  unsuitable here.
+- **Clustering:** the pairwise correspondences of the combined matcher, with
+  two-pass type blocking as prefilter, form 59 clusters, i.e. attributes of a
+  shared Product schema.
 
-## 2. Data
+## 2. Data and cleaning
 
-The tables come from the WDC Schema.org Table Corpus 2023, class Product: one
-table per web shop, 100 products each, values in many languages and currencies.
-Column headers are flattened schema.org property paths (`offers.price`,
-`brand.name`).
+One table per web shop, 100 products each, values in many languages and
+currencies. Column headers are flattened schema.org property paths
+(`offers.price`, `brand.name`).
 
 | | Raw | After cleaning |
 |---|---|---|
@@ -45,388 +33,168 @@ Column headers are flattened schema.org property paths (`offers.price`,
 | Columns | 1,448 | 1,243 |
 | Empty columns | 234 | 119 |
 | Non-empty columns | 1,214 | 1,124 |
-| Header names / shared attributes | 236 | 155 (58 in only one shop) |
-| Cross-table column pairs | 1,031,828 (all columns) | 624,076 (non-empty) |
-| True pairs | – | 29,268 |
+| Cross-table pairs of non-empty columns | – | 624,076 |
 
-### Cleaning
-
-| Rule | Cells / columns |
+| Cleaning rule | Cells / columns |
 |---|---|
 | JSON list cells (`["31.70", "31.16"]`) keep their first element | 3,341 cells |
 | `undefined`, `null`, `n/a`, … become empty | 233 cells |
 | Numbers normalized (`2.4E1` → 24, `$116.45` → 116.45) in mostly numeric columns | 1,489 cells |
 | Columns split by JSON shape (`offers.price` / `offers[].price`) joined when they never overlap | 205 columns |
 
-Cleaning was decisive: on the raw data, type blocking kept only 56% of the true
-pairs; on cleaned data, 94% before and 98.6% after the rule fixes of section 4.
-
-### Ground truth
-
-Because the headers are schema.org paths, the correct answers are derived from
-them, with four rules agreed on 2026-11-17:
-
-1. `brand` = `brand.name`.
-2. `sku` = `offers.sku` = `url.sku`; `productid` and `mpn` stay separate.
-3. `offers.X` = `X` for offer and product properties (price, currency,
-   availability, condition, category, gtin, mpn, …).
-4. `price`, `lowprice`, `highprice` are separate; their pairs (3,469) are
-   reported apart as related 1:n pairs.
-
-Since the ground truth comes from the names, a matcher that reads names finds
-the answer trivially (Levenshtein on names: F1_H 0.754, MRR 0.992). All reported
-results therefore use **hidden names**: table and column names replaced by
-salted hashes and columns permuted (`transform_dataset.py opaque-tables` and
-`permute`).
+Empty columns are left out: there is nothing to match from.
 
 ## 3. Pipeline
 
 ```
-clean → ground truth → hide names → candidate selection → Schematch matchers
-      → combiner → selector → shared schema (clustering) → evaluation
+clean → scenarios (all shop pairs) → Schematch matchers → blocker evaluation
+                                                        → clustering (shared schema)
 ```
-
-This follows the course architecture *Schemaelemente → Vorfilter/Top-k → teure
-Matcher → Combiner → Selector → Mapping* and the duplicate-detection phases
-(preparation, candidate generation, matching, decision, clustering).
 
 | Step | Tool |
 |---|---|
-| Cleaning, ground truth | `tools/wdc_prepare.py` |
-| Ground-truth audit and manual corrections | `tools/wdc_gt_audit.py`, `tools/wdc_gt_overrides.csv` |
-| Candidate selection, PC/RR | `tools/wdc_candidates.py` |
-| Schematch scenarios, hiding names, runs | `tools/wdc_scenarios.py` |
-| Role profile matcher | `tools/wdc_roles.py` |
-| Combiner, filter, selector, error analysis | `tools/wdc_combine.py` |
-| Shared schema | `tools/wdc_schema.py` |
+| Cleaning | `tools/wdc_prepare.py` |
+| Scenarios, Schematch configuration and run | `tools/wdc_scenarios.py` |
+| Blockers and their evaluation | `tools/wdc_candidates.py` |
+| Reading matcher outputs, mutual top-1 | `tools/wdc_matches.py` |
+| Clustering | `tools/wdc_schema.py` |
+
+**Matchers** (fast Schematch first-line matchers, no Python server, no model):
+one label matcher (`LevenshteinMatcher`, on the column names) and six instance
+matchers (`PMFMatcher`, `KolmogorovSmirnovMatcher`, `JensenShannonValueMatcher`,
+`ValueShapeRoleMatcher`, `CharDistributionMatcher`, `PatternProfileMatcher`).
+The **combined matcher** is the mean of the seven min-max normalized score
+matrices. A matcher's **correspondences** are its mutual top-1 pairs per shop
+pair: both columns are each other's best partner with a positive score.
+
+| Matcher | Correspondences |
+|---|---|
+| CharDistribution | 24,180 |
+| JensenShannonValue | 7,928 |
+| KolmogorovSmirnov | 27,224 |
+| Levenshtein | 30,240 |
+| PMF | 47,083 |
+| PatternProfile | 39,712 |
+| ValueShapeRole | 19,798 |
+| Combined (mean) | 28,818 |
 
 ## 4. Search-space reduction
 
-Search space: all 624,076 cross-table pairs of non-empty columns. Metrics from
-the course: **Pair Completeness** PC = true pairs among candidates / all true
-pairs, and **Reduction Ratio** RR = 1 − candidates / all pairs. Every method
-looks only at values, never at names.
+**Evaluation (slide 13).** The blockers act as a prefilter for the matchers:
+they should remove only pairs that are unlikely to match. The correspondences
+a matcher finds on *all* pairs are its reference:
 
-| Course method | Candidates | PC | RR | Verdict |
-|---|---|---|---|---|
-| Blocking on column type, one pass | 153,704 | 92.8% | 75.4% | good start |
-| **Multi-pass blocking (2 passes)** | **177,736** | **98.6%** | **71.5%** | **chosen** |
-| Multi-pass blocking (3 passes) | 206,139 | 98.8% | 67.0% | +0.2 PC for 28,000 pairs |
-| 3 passes + top-3 per table | 158,356 | 95.5% | 74.6% | trades PC for RR 1:1 |
-| 3 passes + top-1 per table | 74,783 | 79.7% | 88.0% | loses too much |
-| Size filter (distinct-count ratio ≥ 0.1) | 151,719 | 87.9% | 75.7% | loses too much |
-| Inverted index on value tokens | 118,066 | 61.9% | 81.1% | unsuitable |
-| MinHash + LSH (16 bands × 4 rows) | 5,351 | 12.3% | 99.1% | unsuitable |
+- **PC** (pair completeness) = correspondences of the matcher kept by the
+  blocker / all correspondences of the matcher;
+- **RR** (reduction ratio) = 1 − candidates / all 624,076 pairs.
 
-**Blocking key.** Each column gets a type from the majority of its values:
-number, date, currency (ISO 4217 code), URL, schema.org enumeration, code, text.
-The second pass merges number and code, because the same attribute (sku) is
-numeric in one shop and alphanumeric in another.
+A blocker suits a matcher when PC is close to 100% and RR is high. Blockers
+look only at values, never at column names.
 
-**Loss analysis** raised PC from 94.2% to 98.6% with four rule fixes:
-enumeration values without the `schema.org/` prefix (`in_stock`), more date
-formats (`2023/10/12`, `Oct. 21, 2023`), longer codes (`artworkid[…]`), and
-currency only for real ISO codes (the brand "ESR" had been typed as currency).
-The remaining 420 lost pairs are data errors (an sku holding the shop's home
-page URL) or free text (`New`, `Новый`).
+| Blocker | RR | CharDist | JS | KS | Leven. | PMF | Pattern | VShape | **Mean** |
+|---|---|---|---|---|---|---|---|---|---|
+| Type, one pass | 75.4% | 86.7% | 98.9% | 71.5% | 88.5% | 33.9% | 96.5% | 40.3% | 92.5% |
+| **Type, two passes** | **71.5%** | 91.1% | 99.4% | 74.0% | 92.6% | 38.0% | 98.6% | 43.4% | **95.8%** |
+| Type, three passes | 67.0% | 91.3% | 99.4% | 79.2% | 93.0% | 48.7% | 98.7% | 48.1% | 96.0% |
+| Three passes + top-3 per table | 74.6% | 90.8% | 98.1% | 76.1% | 90.3% | 40.2% | 93.8% | 41.8% | 95.1% |
+| Three passes + top-1 per table | 88.0% | 82.1% | 89.7% | 64.0% | 75.1% | 25.8% | 69.8% | 27.0% | 84.1% |
+| Three passes + size filter | 75.7% | 84.3% | 87.0% | 71.3% | 82.8% | 48.4% | 70.8% | 39.9% | 90.1% |
+| Inverted index on value tokens | 81.1% | 61.7% | 77.5% | 54.6% | 61.0% | 32.4% | 32.0% | 29.6% | 64.4% |
+| MinHash + LSH (16 bands × 4 rows) | 99.1% | 15.0% | 34.5% | 8.8% | 11.7% | 3.2% | 8.7% | 4.3% | 12.7% |
 
-**Why token-based methods fail here.** Inverted index and MinHash/LSH look for
-shared tokens. Different shops sell different products in different languages,
-so their columns share almost no values, even when the columns mean the same.
-This is the course's warning about approximate filters, observed on real data.
+**Blockers.**
 
-**Methods not applied.** Prefix filtering needs a Jaccard threshold on token
-sets, which, as shown, carries no signal here. Sorted neighbourhood and suffix
-arrays address record keys with typos, not column pairs.
+- **Type blocking:** each column gets a type from the majority of its first
+  100 values: number, date, currency (ISO 4217 code), URL, schema.org
+  enumeration, code, text. Only columns of the same type are compared. The
+  second pass also compares number with code (an SKU is numeric in one shop
+  and alphanumeric in another); the third also code with text.
+- **Top-k:** after three-pass blocking, keep for each column its k nearest
+  columns per other table by nine value features (length, share of digits,
+  letters, spaces, punctuation, upper case, distinct values, words).
+- **Size filter:** drop pairs whose distinct-value counts differ by more than
+  a factor of ten.
+- **Inverted index / MinHash + LSH:** pairs of columns that share value tokens.
 
-## 5. Matching, combining, selecting
+**Findings.**
 
-Experiments use 200 randomly sampled shop pairs (seed 20261117): 24,973 column
-pairs, 1,150 true pairs, at least one true pair per scenario. The candidate
-filter keeps 98.2% of the true pairs and removes 71.8% of the cells, matching
-the full-data numbers. Each Schematch run over the 200 pairs takes about 5
-seconds.
+1. **Two-pass type blocking is the best compromise** for the combined matcher:
+   95.8% of its correspondences at 71.5% reduction. A third pass adds 0.2 PC
+   for 4.5 points of RR.
+2. **Which blocker suits which matcher** (the question of slide 13): type
+   blocking suits JensenShannon, PatternProfile, CharDistribution and
+   Levenshtein (91–99%). It does not suit PMF and ValueShapeRole: most of
+   their correspondences pair columns of different types (e.g. a number with
+   a text). Without ground truth it stays open whether those are true
+   correspondences the blocker loses or wrong ones it rightly removes.
+3. **Top-1 and the size filter** buy RR with PC roughly one to one; top-1
+   reaches 88% RR but loses 16% of the combined matcher's correspondences.
+4. **Token-based blockers fail.** Different shops sell different products in
+   different languages, so columns with the same meaning share almost no
+   values. Inverted index and MinHash/LSH therefore lose most correspondences.
 
-Metrics (computed by `tools/evaluate_paper.py`):
+## 5. Clustering
 
-- **F1_H:** F1 of a 1:1 Hungarian assignment.
-- **F1_M:** F1 of mutual top-1 (both columns are each other's best).
-- **MRR:** mean reciprocal rank of the correct partner per source column.
+The combined matcher with two-pass type blocking as prefilter (pairs the
+blocker removes get score 0) gives 28,688 pairwise correspondences over the
+4,950 shop pairs. They are clustered like duplicates in entity matching, with
+one rule: **one column per shop and cluster**. Correspondences are joined
+strongest first; a join that would put two columns of the same shop into one
+cluster is refused.
 
-| Method | F1_H | F1_M | MRR |
-|---|---|---|---|
-| ValueShapeRoleMatcher | 0.136 | 0.129 | 0.441 |
-| PMFMatcher | 0.152 | 0.213 | 0.498 |
-| JensenShannonValueMatcher | 0.259 | 0.260 | 0.448 |
-| PatternProfileMatcher | 0.365 | 0.352 | 0.619 |
-| KolmogorovSmirnovMatcher | 0.379 | 0.414 | 0.681 |
-| CharDistributionMatcher (best Schematch matcher) | 0.435 | 0.467 | 0.753 |
-| CharDistributionMatcher + filter | 0.498 | 0.504 | 0.789 |
-| RoleProfile + filter | 0.502 | 0.515 | 0.816 |
-| Mean of 6 Schematch matchers | 0.506 | 0.566 | 0.812 |
-| Mean of 6 Schematch matchers + filter | 0.571 | **0.592** | 0.841 |
-| **Mean of 6 Schematch matchers + RoleProfile + filter** | **0.582** | 0.582 | **0.847** |
+Result: **59 clusters** (33 with at least five shops, 16 single columns),
+written to `results/<run>/global_schema.csv`. Largest clusters:
 
-**Combiner.** The mean of min-max normalized matrices. The six matchers err
-differently, so the mean beats every single one; even the weak ones add
-independent evidence (mean of all six > mean of the best three: 0.571 vs 0.527).
-
-**Candidate filter after matching.** Setting non-candidate cells to 0 raises
-F1_H from 0.506 to 0.571. Search-space reduction here is not only a cost
-measure; it also removes impossible pairs such as price ↔ description.
-
-**Role profile matcher.** The course matchers are labels, types/constraints,
-structure and instances; no language model. With names hidden, each column is
-described by the role it plays in its own table: share of distinct values,
-words, length, whether its value occurs inside another column of the same row
-(a brand inside the product name), whether it contains another column (a
-description containing the name), and number features (share of numbers, share
-in [0, 5] for ratings, integers, magnitude). Medians over all shops:
-
-| | distinct | words | inside another column | contains another column |
-|---|---|---|---|---|
-| brand | 0.50 | 1.6 | 45% | 0% |
-| category | 0.48 | 1.8 | 9% | 0% |
-| name | 1.00 | 6.3 | 6% | 4% |
-| description | 1.00 | 36.2 | 0% | 36% |
-
-It is language-independent, needs no download, and is the best single matcher.
-In the combination it adds about one point, because the Schematch matchers
-already capture length and repetition indirectly.
-
-**Selector.** For the combination without RoleProfile, mutual top-1 and partial
-Hungarian (penalty 0.3) reach F1 0.592 (precision 0.61, recall 0.60); plain
-Hungarian reaches 0.571 (precision 0.52, recall 0.66), because it assigns
-partners also to columns that have none.
-
-## 6. Error analysis
-
-Per attribute (6 matchers + filter, mutual top-1, 200 shop pairs):
-
-| Attribute | True pairs | Recall | Precision |
-|---|---|---|---|
-| pricecurrency | 144 | 100% | 100% |
-| pricevaliduntil | 23 | 96% | 73% |
-| availability | 93 | 95% | 98% |
-| name | 193 | 67% | 70% |
-| price | 148 | 55% | 72% |
-| itemcondition | 33 | 55% | 69% |
-| description | 159 | 54% | 87% |
-| brand | 139 | 29% | 64% |
-| sku | 117 | 26% | 57% |
-| category | 10 | 20% | 11% |
-| mpn | 9 | 0% | 0% |
-
-Rank of the correct partner (6 matchers + RoleProfile + filter):
-
-| Attribute | Rank 1 | Top 3 |
-|---|---|---|
-| name | 77% | 99% |
-| description | 76% | 97% |
-| price | 72% | 89% |
-| brand | 61% | 88% |
-| sku | 48% | 86% |
-| all others | 87% | 96% |
-
-Findings:
-
-1. **Fixed formats are solved** (currency, dates, enumerations).
-2. **Brand** is ranked first in 61% of the cases but kept by mutual top-1 in
-   only about half of them: the brand column of the other shop often prefers a
-   different column. The ranking is reasonable; the decision is hard.
-3. **Product IDs** (sku, mpn, productid) are codes used inconsistently across
-   shops. Neither format nor role separates them; arguably neither could a
-   person without the names.
-4. **Numbers** are sometimes confused (rating ↔ price, review count ↔ sku).
-5. Some counted errors are ties between two identical columns of the same table
-   (for example `name` and `url.name`); precision is slightly understated.
-6. **Some "errors" are errors of the ground truth**, see below.
-
-### Errors found in the ground truth
-
-The ground truth trusts the header each shop declared. Shops misuse
-schema.org markup, so a header does not always describe its values. Example: if
-shop A has `brand` = Apple, Sony, shop B has only `name` with the values Apple,
-Sony, and shop C has `name` with people's names, the header-based ground truth
-says B.`name` = C.`name` and A.`brand` ≠ B.`name`. Both statements are wrong.
-
-**How the suspects were found.** `tools/wdc_gt_audit.py` compares every
-non-empty column with what its attribute should look like: a brand is short and
-repeats, a product name is unique and has several words, a price is a number, a
-currency is an ISO code, a rating is at most 100, and the value type matches
-the type most shops use for the attribute. It flagged 37 of 1,124 columns
-(`datasets-local/wdc/ground_truth/audit.csv`). Each one was inspected by hand.
-The check only flags; a person decides.
-
-**Decisions (recorded in `tools/wdc_gt_overrides.csv`, applied by
-`wdc_prepare.py groundtruth`):**
-
-| Shop | Column | Values | Decision |
-|---|---|---|---|
-| tower.com | `brand` | "Byrd, Charlie", "Getz, Stan" (musicians) | new attribute `creator` |
-| pixels.com | `brand.name` | "Lars Lentz - Website" (artists) | `creator` |
-| threadless.com | `brand.name` | "HIDENbehindAroc's Shop" (artists' shops) | `creator` |
-| creativemarket.com | `brand.name` | "Valerie Bodnar" (designers) | `creator` |
-| udg.mx | `brand.name` | identical to `name` in all 100 rows | relabel to `name` |
-| revolve.com | `description` | "dress", "top", "jean" | relabel to `category` |
-| kozaleathers.com | `name` | "M / Turquoise Blue" (size/colour) | new attribute `variant` |
-| pp.ua | `brand.name`, `mpn`, `sku` | the same long product titles in all three | exclude |
-| elliman.com | `brand.name` | "MLS Limousine" (listing service) | exclude |
-| eltiempo.com | `name`, `description`, `sku`, `productid` | one constant value for the whole news site | exclude |
-| semana.com | `name`, `sku`, `productid` | one constant value for the whole news site | exclude |
-
-In total 18 columns: 7 relabelled, 11 excluded from every evaluation.
-
-**Kept as they are:**
-
-- *Borderline brands:* made-in-china.com (factory names) and skipthedishes.com
-  ("KFC (230 Queen St. E)") count as brand.
-- *Header correct, flagged by mistake:* iso.org (ISO is the brand of its
-  standards), edmunds.com (car makes), mercadolibre.com.ar,
-  shoplightspeed.com, unity.com, slq.qld.gov.au (real brands), docomo.ne.jp
-  (Japanese titles), dan.com (the products are domain names), thredup.com and
-  broadbandnow.com (simple names that repeat).
-- *Right attribute, unusual format* (a cleaning issue, not a ground-truth
-  error): ratings such as "4,7 рейтинг основан на…", prices with text
-  (omega.com, spb.ru), dates such as "Sat Aug 13 15:03:15 PDT 2022",
-  relative URLs, condition written as "New".
-
-**Effect on the results (version 1 = header-based, version 2 = corrected):**
-
-| | Version 1 | Version 2 |
-|---|---|---|
-| Evaluated columns | 1,124 | 1,113 |
-| True pairs | 29,268 | 28,118 |
-| Candidate filter PC (two passes) | 98.6% | **99.4%** |
-| 200 pairs: Mean(6) + RoleProfile + filter, F1_H / F1_M / MRR | 0.582 / 0.582 / 0.847 | 0.575 / 0.589 / **0.857** |
-| 200 pairs: Mean(6) + filter, F1_H / F1_M / MRR | 0.571 / 0.592 / 0.841 | 0.570 / 0.597 / 0.851 |
-| All 4,950 pairs, pairwise mutual top-1, F1 | 0.594 | **0.608** |
-| All pairs, brand recall (pairwise) | 31% | **36%** |
-| Shared schema (one-per-shop merge), F1 | 0.583 | 0.581 |
-| Shared schema, brand recall | 25% | 29% |
-
-- Part of the "lost" candidate pairs were ground-truth errors: with the
-  corrected answers the filter loses only 0.6% of the true pairs.
-- On all shop pairs, F1 rises from 0.594 to 0.608 and brand recall from 31% to
-  36%. Some of the brand errors were indeed errors of the markup.
-- On the 200-pair sample the overall F1 barely moves, and the brand recall of
-  the best combination even drops (29% → 26%) because the sample contains few
-  of the corrected shops. The differences on the sample are within its noise.
-- The main conclusion stands: brand remains the hard case. Correcting the
-  ground truth explains only a small part of it.
-
-## 7. Shared schema
-
-All 4,950 shop pairs were scored (Schematch: about 30 seconds) and combined into
-a 1,124 × 1,124 column similarity matrix. Pair-wise P/R/F1 over all 29,268 true
-pairs:
-
-| Method | Clusters | P | R | F1 |
-|---|---|---|---|---|
-| Pairwise decisions only (mutual top-1) | – | 0.607 | 0.582 | 0.594 |
-| **One-per-shop merge along mutual top-1 edges** | **65** | **0.631** | 0.542 | **0.583** |
-| + join whole clusters (average ≥ 0.4) | 51 | 0.626 | 0.543 | 0.581 |
-| Average linkage, cut at 0.5 | 133 | 0.448 | 0.542 | 0.491 |
-
-**One-per-shop merge** joins the strongest mutual pairs first and refuses any
-merge that would put two columns of the same shop into one cluster. It has no
-tuned parameter. Average linkage without this rule chains unrelated attributes.
-
-Largest clusters (purity = share of the majority attribute):
-
-| Shops | Purity | Attribute | Mixed with |
-|---|---|---|---|
-| 90 | 87% | name | brand, url.name, offers.name |
-| 84 | 100% | pricecurrency | – |
-| 81 | 80% | description | name, url.description, review body |
-| 69 | 100% | availability | – |
-| 60 | 88% | price | highprice, rating |
-| 58 | 59% | brand | category, name, manufacturer |
-| 58 | 57% | sku | highprice, mpn, lowprice |
-| 28 | 93% | itemcondition | – |
-| 25 | 96% | ratingvalue | – |
-
-The holistic step gives a readable, consistent schema at the same quality as
-the pairwise decisions, but it did **not** recover brand (pairwise recall 31%,
-clusters 25%). Brand columns end up in several clusters whose average
-similarity is low, so they are not joined. The limiting factor is the evidence
-in the values, not the selection method.
-
-## 8. Lessons in terms of the course
-
-| Course statement | Observation here |
+| Shops | Column names in the cluster |
 |---|---|
-| A true match lost in candidate generation cannot be recovered. | PC was the first thing to measure; 1.4% of true pairs are lost for good. |
-| Measure PC and RR, not only run time. | Run time was never the problem (seconds); PC decided between methods. |
-| Prefer a union of several small rules over one coarse rule. | Two-pass blocking: +5.8 PC over one pass. |
-| Data preparation comes first. | Cleaning moved PC from 56% to 94%. |
-| Approximate filters (LSH) can lose matches. | MinHash/LSH kept 12% of the true pairs. |
-| Schema matching only via labels is a trap. | Labels give the answer away here, so they were hidden. |
-| Use types, structure and instances. | Type blocking, role profile (structure within the table) and value matchers carry the result. |
-| 1:1 selection can be wrong for 1:n cases. | price/lowprice/highprice were reported apart; two sku columns in one shop are n:1. |
-| Keep several candidates for uncertain cases and let an expert confirm. | Top-3 contains 86–99% of the true partners, versus 48–77% at rank 1. |
+| 97 | name (94), review.name, brand.name, image.name |
+| 91 | description (89), review.description, offers.url |
+| 84 | offers.pricecurrency (83), pricecurrency |
+| 80 | offers.price (74), aggregaterating.ratingvalue, offers.lowprice, … |
+| 70 | offers.availability (70) |
+| 64 | sku (59), offers.price (2), … |
+| 61 | brand.name (38), brand (14), manufacturer.name, … |
+| 42 | aggregaterating.reviewcount (27), aggregaterating.ratingcount (4), … |
+| 34 | offers.pricevaliduntil (33), offers.validfrom |
+| 33 | brand.name (14), brand (6), inlanguage, offers.category, … |
+| 32 | mpn (18), gtin13 (4), offers.gtin12 (3), gtin12 (3), … |
+| 29 | aggregaterating.ratingvalue (27), … |
 
-## 9. Limitations
+Clusters of fixed formats (currency, availability, validity date) are clean.
+Brand is split over two clusters, and the product identifiers (sku, mpn, gtin)
+mix, because by their values alone they are hard to tell apart.
 
-- The ground truth is derived from schema.org headers with four agreed rules;
-  other rules (for example merging all IDs) give other numbers.
-- Sections 4–7 report the header-based ground truth (version 1); section 6
-  compares it with the corrected version 2. The audit rules flag only what
-  they check for; errors of other kinds may remain.
-- List cells keep only their first element.
-- Matcher experiments use one random sample of 200 shop pairs; the candidate
-  filter numbers agree with the full data (98.2% vs 98.6% PC).
-- Method comparisons in step 9 report several settings; only the chosen method
-  has no tuned parameter.
-- Only fast Java value matchers and the role profile were used. Neural matchers
-  (SBERT, LLMs) were deliberately left out.
+## 6. Limitations and open points
 
-## 10. Recommendations
+- The reference for PC is each matcher's own decisions, not the truth: PC
+  measures how much a blocker changes a matcher's result, not whether that
+  result is correct. Mutual top-1 always picks a partner when one has a
+  positive score, so weak matchers produce many doubtful correspondences.
+- Only the WDC Product corpus was used, not WikiDBs, SchemaPile or
+  SportsTables.
+- Only 1:1 correspondences are derived; 1:n and n:m correspondences
+  (e.g. `price` vs `lowprice`/`highprice`) are not.
+- Step 2 of the "Vorgehensweise" (dependencies between corresponding columns:
+  co-occurrence, encodings, merges, units, naming rules) is not done.
+- Blocking and clustering are Python tools around Schematch, not part of the
+  Java framework.
+- Not tried from the course ideas: blockers on column names, on joinable
+  attributes, on entropy, on embeddings of value sets; sorted neighbourhood
+  and canopy clustering.
 
-1. For integration in practice, present the **top-3 candidates** for brand,
-   sku, mpn and productid and let a person confirm; accept mutual top-1
-   automatically for currency, availability, dates and condition.
-2. Use **external knowledge** for brands (a brand dictionary) if they must be
-   matched automatically; values alone are not enough.
-3. Separate **numbers by range** (ratings in [0, 5] or [0, 100], counts as
-   integers) to reduce rating ↔ price confusions.
-4. If names may be used in production, a label matcher combined with the value
-   matchers will dominate; the hidden-name results show what remains when
-   names are missing or meaningless.
-
-## 11. Reproduction
+## 7. Reproduction
 
 From the repository root, with JDK 21 (`export JAVA_HOME=$(/usr/libexec/java_home -v 21)`),
-a built Schematch (`mvn test compile dependency:build-classpath -Dmdep.outputFile=target/cp.txt`)
-and `.venv` with `requirements.txt` (Python 3.13):
+a built Schematch (`mvn -DskipTests compile dependency:build-classpath -Dmdep.outputFile=target/cp.txt`)
+and `.venv` with `requirements.txt`:
 
 ```shell
 python tools/wdc_prepare.py clean
-python tools/wdc_prepare.py groundtruth                  # version 2: with tools/wdc_gt_overrides.csv
-# python tools/wdc_prepare.py groundtruth --no-overrides # version 1: headers only
-python tools/wdc_gt_audit.py                             # flags suspicious columns for review
-python tools/wdc_candidates.py evaluate --analyze type2 --write type2
-
 python tools/wdc_scenarios.py build
-python tools/wdc_scenarios.py hide
-python tools/wdc_scenarios.py config fast-opaque --corpus opaque --matchers fast
-python tools/wdc_scenarios.py run fast-opaque --jvm-arg=-Xmx6g
-.venv/bin/python tools/wdc_combine.py results/<run> --corpus opaque
-.venv/bin/python tools/wdc_combine.py results/<run> --analyze "Mean(all value matchers) + candidate filter"
-
-python tools/wdc_scenarios.py build --pairs 0 --name all-readable
-python tools/wdc_scenarios.py hide --name all-readable
-python tools/wdc_scenarios.py config all-fast --corpus all-opaque --no-eval
-python tools/wdc_scenarios.py run all-fast --jvm-arg=-Xmx8g
-.venv/bin/python tools/wdc_schema.py results/<run> --corpus all-opaque --readable all-readable
+python tools/wdc_scenarios.py config
+python tools/wdc_scenarios.py run --jvm-arg=-Xmx8g
+.venv/bin/python tools/wdc_candidates.py evaluate results/<run>
+.venv/bin/python tools/wdc_schema.py results/<run>
 ```
 
-For version 2 the corrected runs used the corpus names `v2-readable` and
-`v2-all-readable` (`--name`, and `--corpus v2-opaque --readable v2-readable` for
-`wdc_combine.py`). `hide` also writes the key file
-`datasets-local/wdc/scenarios/keys/<opaque corpus>.csv` (hidden table and column
-→ readable name and position), kept outside the corpus Schematch reads;
-`wdc_combine.py --analyze` and `wdc_schema.py` read names from it. For an
-existing opaque corpus: `python tools/wdc_scenarios.py keys --name <readable corpus>`.
-All outputs are written to `datasets-local/wdc/` and
-`results/` (both git-ignored).
+Outputs are written to `datasets-local/wdc/` and `results/` (both git-ignored).

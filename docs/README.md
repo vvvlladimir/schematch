@@ -12,10 +12,9 @@ relative to the repository root unless stated otherwise.
 3. [Datasets](datasets.md): acquire public benchmarks, convert files and configure loading.
 4. [Evaluation](evaluation.md): choose metrics, handle ties and summarize results.
 
-## Project plans
+## Project reports
 
-- [WDC product matching plan](wdc-product-matching-plan.md): matching the 100 web-shop tables in `vorbereitete_tabellen/` with search-space reduction.
-- [WDC product matching report](wdc-product-matching-report.md): results, error analysis and lessons of that plan.
+- [WDC product matching report](wdc-product-matching-report.md): search-space reduction, matching and clustering of the 100 web-shop tables in `vorbereitete_tabellen/`.
 
 ## Optional Python backends
 

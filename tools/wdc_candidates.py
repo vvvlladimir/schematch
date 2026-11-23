@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
-"""Candidate selection (search-space reduction) for the WDC Product tables.
+"""Search-space reduction (blockers) for the WDC Product tables, step 3 of
+docs/wdc-product-matching-report.md.
 
-Step 4 of docs/wdc-product-matching-plan.md. Needs the outputs of
-tools/wdc_prepare.py (clean + groundtruth).
+    .venv/bin/python tools/wdc_candidates.py evaluate results/<run>
 
-    python tools/wdc_candidates.py evaluate            # PC/RR for all methods
-    python tools/wdc_candidates.py evaluate --write top3   # also write candidates.csv
+There is no ground truth. As proposed in the course (Einführung, slide 13), every
+matcher is run on all column pairs of all shop pairs (tools/wdc_scenarios.py);
+the correspondences it selects (mutual top-1) serve as its reference. For each
+blocker and matcher:
 
-Column names are never used to build candidates: every method looks only at the
-values. Names are used only to score the result against the ground truth.
-Standard library only.
+    PC = matcher correspondences kept by the blocker / all matcher correspondences
+    RR = 1 - candidates / all cross-table column pairs
+
+A blocker suits a matcher when it keeps almost all of that matcher's
+correspondences (PC near 100%) while removing many pairs (high RR).
+The blockers look only at values, never at column names.
 """
 from __future__ import annotations
 
@@ -23,6 +28,9 @@ from collections import Counter, defaultdict
 from itertools import combinations
 from pathlib import Path
 
+import wdc_matches
+from wdc_scenarios import safe_name
+
 csv.field_size_limit(sys.maxsize)
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -33,17 +41,14 @@ SAMPLE = 100  # values per column used for profiling
 # ------------------------------------------------------------------ data --
 
 class Column:
-    __slots__ = ("idx", "table", "name", "attribute", "values", "type", "tokens", "features")
+    __slots__ = ("idx", "table", "name", "values", "type", "tokens", "features")
 
-    def __init__(self, idx, table, name, attribute, values):
-        self.idx, self.table, self.name, self.attribute, self.values = idx, table, name, attribute, values
+    def __init__(self, idx, table, name, values):
+        self.idx, self.table, self.name, self.values = idx, table, name, values
 
 
-def load(base: Path) -> list[Column]:
-    attrs = {}
-    with (base / "ground_truth" / "column_attributes.csv").open(encoding="utf-8") as fh:
-        for r in csv.DictReader(fh):
-            attrs[(r["table"], int(r["column_index"]))] = r["shared_attribute"]
+def load(base: Path = DEFAULT_DIR) -> list[Column]:
+    """Non-empty columns of the cleaned tables (empty ones cannot be matched from values)."""
     cols = []
     for path in sorted((base / "clean").glob("*.csv")):
         with path.open(encoding="utf-8", newline="") as fh:
@@ -51,9 +56,8 @@ def load(base: Path) -> list[Column]:
         header, body = rows[0], rows[1:]
         for c, name in enumerate(header):
             values = [r[c] for r in body if c < len(r) and r[c]]
-            # Empty columns cannot be matched from values; excluded ones are not scored.
-            if values and attrs[(path.stem, c)] != "_exclude":
-                cols.append(Column(len(cols), path.stem, name, attrs[(path.stem, c)], values))
+            if values:
+                cols.append(Column(len(cols), path.stem, name, values))
     return cols
 
 
@@ -219,116 +223,82 @@ def size_filter(cols, base, min_ratio=0.1):
 
 # ------------------------------------------------------------ evaluation --
 
-RELATED = [{"price", "lowprice", "highprice"}]
-
-
-def truth(cols):
-    by_attr = defaultdict(list)
-    for c in cols:
-        by_attr[c.attribute].append(c.idx)
-    true = set()
-    for ids in by_attr.values():
-        for i, j in combinations(ids, 2):
-            if cols[i].table != cols[j].table:
-                true.add((i, j))
-    related = set()
-    for group in RELATED:
-        for a, b in combinations(sorted(group), 2):
-            for i in by_attr.get(a, []):
-                for j in by_attr.get(b, []):
-                    if cols[i].table != cols[j].table:
-                        related.add((min(i, j), max(i, j)))
-    return true, related
-
-
 def all_pairs(cols):
     per_table = Counter(c.table for c in cols)
     n = sum(per_table.values())
     return (n * n - sum(v * v for v in per_table.values())) // 2
 
 
+def blockers(cols) -> dict[str, set[tuple[int, int]]]:
+    type3 = type_blocking_three_pass(cols)
+    out = {
+        "Type blocking, one pass": blocking(cols, lambda c: c.type),
+        "Type blocking, two passes": type_blocking_two_pass(cols),
+        "Type blocking, three passes": type3,
+    }
+    for k in (3, 1):
+        out[f"Three passes + top-{k} per table"] = top_k(cols, type3, k)
+    out["Three passes + size filter (distinct ratio >= 0.1)"] = size_filter(cols, type3)
+    out["Inverted index on value tokens"] = inverted_index(cols)
+    out["MinHash + LSH on value tokens (b=16, r=4)"] = minhash_lsh(cols)
+    return out
+
+
+def matcher_correspondences(run: Path, cols) -> dict[str, set[tuple[int, int]]]:
+    """Mutual top-1 pairs of every matcher over all shop pairs, as global column index pairs."""
+    index = {f"{safe_name(c.table)}.{c.name}": c.idx for c in cols}
+    found = defaultdict(set)
+    n = 0
+    for _, sources, targets, mats in wdc_matches.scenarios(run):
+        gi, gj = [index[s] for s in sources], [index[t] for t in targets]
+        for matcher, m in mats.items():
+            for i, j in wdc_matches.mutual_top1(m):
+                a, b = gi[i], gj[j]
+                found[matcher].add((a, b) if a < b else (b, a))
+        n += 1
+    print(f"{n} shop pairs read from {run}")
+    return dict(found)
+
+
 def cmd_evaluate(args):
     cols = load(args.dir)
     profile(cols)
-    true, related = truth(cols)
     total = all_pairs(cols)
-    print(f"non-empty columns {len(cols)}, all cross-table pairs {total}, "
-          f"true pairs {len(true)}, related 1:n pairs {len(related)}")
+    print(f"non-empty columns {len(cols)}, all cross-table pairs {total}")
     print("column types:", dict(Counter(c.type for c in cols).most_common()))
-    print()
-
-    type1 = blocking(cols, lambda c: c.type)
-    type2 = type_blocking_two_pass(cols)
-    type3 = type_blocking_three_pass(cols)
-    methods = {
-        "type1": ("Type blocking, one pass", type1),
-        "type2": ("Type blocking, two passes", type2),
-        "type3": ("Type blocking, three passes", type3),
-    }
-    for k in (5, 3, 2, 1):
-        methods[f"top{k}"] = (f"Three passes + top-{k} per table", top_k(cols, type3, k))
-    methods["inverted"] = ("Inverted index on value tokens", inverted_index(cols))
-    methods["lsh"] = ("MinHash + LSH on value tokens (b=16, r=4)", minhash_lsh(cols))
-    methods["size"] = ("Three passes + size filter (distinct ratio >= 0.1)", size_filter(cols, type3))
+    ref = matcher_correspondences(args.run, cols)
+    names = sorted(ref, key=lambda m: (m == "Mean of all matchers", m))
+    print("\ncorrespondences per matcher (mutual top-1):")
+    for m in names:
+        print(f"  {m:<28} {len(ref[m]):>7}")
 
     rows = []
-    print(f"{'method':<50}{'candidates':>11}{'PC':>8}{'RR':>8}{'PC 1:n':>8}")
-    for key, (label, cand) in methods.items():
-        pc = len(cand & true) / len(true)
-        rr = 1 - len(cand) / total
-        pc_rel = len(cand & related) / len(related) if related else 0
-        rows.append({"method": key, "label": label, "candidates": len(cand),
-                     "pc": round(pc, 4), "rr": round(rr, 4), "pc_related": round(pc_rel, 4)})
-        print(f"{label:<50}{len(cand):>11}{pc:>8.1%}{rr:>8.1%}{pc_rel:>8.1%}")
+    for label, cand in blockers(cols).items():
+        row = {"blocker": label, "candidates": len(cand), "RR": round(1 - len(cand) / total, 4)}
+        for m in names:
+            row[m] = round(len(cand & ref[m]) / len(ref[m]), 4)
+        rows.append(row)
 
-    out = args.dir / "candidates"
-    out.mkdir(parents=True, exist_ok=True)
-    with (out / "reduction_report.csv").open("w", encoding="utf-8", newline="") as fh:
+    short = {m: m.replace("Matcher", "")[:10] for m in names}
+    print(f"\nPC per matcher (share of its correspondences the blocker keeps)\n")
+    print(f"{'blocker':<52}{'RR':>7}" + "".join(f"{short[m]:>11}" for m in names))
+    for r in rows:
+        print(f"{r['blocker']:<52}{r['RR']:>7.1%}" + "".join(f"{r[m]:>11.1%}" for m in names))
+
+    out = args.run / "blocker_evaluation.csv"
+    with out.open("w", encoding="utf-8", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(rows[0]))
         w.writeheader()
         w.writerows(rows)
-
-    # Loss analysis for the chosen method: which attributes and type combinations are lost.
-    chosen = methods[args.analyze][1]
-    lost = true - chosen
-    by_attr = Counter(cols[i].attribute for i, _ in lost)
-    attr_total = Counter(cols[i].attribute for i, _ in true)
-    by_types = Counter(tuple(sorted((cols[i].type, cols[j].type))) for i, j in lost)
-    print(f"\nLost true pairs with '{methods[args.analyze][0]}': {len(lost)}")
-    print("  by attribute (lost / true):")
-    for a, n in by_attr.most_common(args.show):
-        print(f"    {a:<30} {n:>6} / {attr_total[a]:<6} ({n / attr_total[a]:.0%})")
-    print("  by type combination:")
-    for t, n in by_types.most_common(args.show):
-        print(f"    {' vs '.join(t):<30} {n:>6}")
-    with (out / f"lost_{args.analyze}.csv").open("w", encoding="utf-8", newline="") as fh:
-        w = csv.writer(fh)
-        w.writerow(["attribute", "table_a", "column_a", "type_a", "sample_a",
-                    "table_b", "column_b", "type_b", "sample_b"])
-        for i, j in sorted(lost):
-            a, b = cols[i], cols[j]
-            w.writerow([a.attribute, a.table, a.name, a.type, a.values[0][:60],
-                        b.table, b.name, b.type, b.values[0][:60]])
-
-    if args.write:
-        cand = methods[args.write][1]
-        with (out / "candidates.csv").open("w", encoding="utf-8", newline="") as fh:
-            w = csv.writer(fh)
-            w.writerow(["table_a", "column_a", "table_b", "column_b", "true_match"])
-            for i, j in sorted(cand):
-                w.writerow([cols[i].table, cols[i].name, cols[j].table, cols[j].name, int((i, j) in true)])
-        print(f"\nCandidates of '{methods[args.write][0]}' written to {out / 'candidates.csv'}")
-    print(f"Report written to {out / 'reduction_report.csv'}")
+    print(f"\nwritten to {out}")
 
 
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--dir", type=Path, default=DEFAULT_DIR)
     sub = p.add_subparsers(dest="command", required=True)
-    e = sub.add_parser("evaluate", help="measure PC/RR of all candidate methods")
-    e.add_argument("--analyze", default="top3", help="method whose losses are analysed")
-    e.add_argument("--write", help="method whose candidates are written to candidates.csv")
-    e.add_argument("--show", type=int, default=12)
+    e = sub.add_parser("evaluate", help="PC/RR of every blocker against every matcher's correspondences")
+    e.add_argument("run", type=Path, help="results/<run> of tools/wdc_scenarios.py run")
     args = p.parse_args()
     {"evaluate": cmd_evaluate}[args.command](args)
 
