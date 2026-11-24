@@ -70,6 +70,7 @@ fail the selected method; method registration alone is not a readiness check.
 | `cluster_units.py` | Group scenarios sharing tables for resampling. |
 | `positional_audit.py` | Check ground-truth position, tie-breaking and column-order effects. |
 | `learned_combiner.py` | Train combinations of recorded matcher scores on other scenario groups. |
+| `wdc_expand.py` | Expand the raw WDC Product corpus (JSON Lines) into the CSV tables of `vorbereitete_tabellen/`. |
 | `check_project.py` | Check repository files for broken links, local paths and generated artifacts. |
 | `audit_matchers.py` | Generate/check the class catalog and named Python adapters. |
 | `audit_dataset_sources.py` | Generate/check the dataset catalog without downloading its sources. |

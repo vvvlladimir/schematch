@@ -32,6 +32,20 @@ One table per web shop, 100 products each, values in many languages and
 currencies. Column headers are flattened schema.org property paths
 (`offers.price`, `brand.name`).
 
+`vorbereitete_tabellen/` is derived from the raw corpus (WDC Schema.org Table
+Corpus 2023, Product, top 100 sites; one `Product_<site>_October2023.json.gz`
+per shop, JSON Lines, 790 MB) by `tools/wdc_expand.py`, which reproduces it
+byte for byte. Nested objects become `a.b`, lists `a[]`, lists of objects
+`a[].b`; `row_id` and `page_url` are dropped. Each table keeps the **first 100
+records** of its file but lists every column that occurs anywhere in the
+file, which is why many columns are empty.
+
+The first 100 records are not a fair sample: in 34 of the 100 shops several of
+them share a page URL (kozaleathers.com: all 100 from 3 of its 654 pages;
+farfetch.com: all 100 from 9 pages). `tools/wdc_expand.py expand --sample random`
+draws a uniform, seeded sample instead; the results below use the first
+records.
+
 | | Raw | After cleaning |
 |---|---|---|
 | Tables | 100 | 100 |
@@ -59,6 +73,7 @@ clean → scenarios (all shop pairs) → Schematch matchers → blocker evaluati
 
 | Step | Tool |
 |---|---|
+| Raw JSON → CSV (`vorbereitete_tabellen/`) | `tools/wdc_expand.py` |
 | Cleaning | `tools/wdc_prepare.py` |
 | Scenarios, Schematch configuration and run | `tools/wdc_scenarios.py` |
 | Blockers and their evaluation | `tools/wdc_candidates.py` |
@@ -236,7 +251,11 @@ From the repository root, with JDK 21 (`export JAVA_HOME=$(/usr/libexec/java_hom
 a built Schematch (`mvn -DskipTests compile dependency:build-classpath -Dmdep.outputFile=target/cp.txt`)
 and `.venv` with `requirements.txt`:
 
+The raw corpus goes to `datasets-local/wdc/raw/Product_top100/` (git-ignored);
+it is only needed to rebuild or check `vorbereitete_tabellen/`:
+
 ```shell
+python tools/wdc_expand.py check     # vorbereitete_tabellen/ matches the raw corpus
 python tools/wdc_prepare.py clean
 python tools/wdc_scenarios.py build
 python tools/wdc_scenarios.py config
