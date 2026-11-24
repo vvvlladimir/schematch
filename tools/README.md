@@ -71,6 +71,8 @@ fail the selected method; method registration alone is not a readiness check.
 | `positional_audit.py` | Check ground-truth position, tie-breaking and column-order effects. |
 | `learned_combiner.py` | Train combinations of recorded matcher scores on other scenario groups. |
 | `wdc_expand.py` | Expand the raw WDC Product corpus (JSON Lines) into the CSV tables of `vorbereitete_tabellen/`. |
+| `wdc_evaluate.py` | Precision, recall and F1 of WDC matchers, blockers and clustering against the ground truth. |
+| `wdc_gt.py` | Build and audit the WDC Product ground truth in `ground_truth/wdc_product/`. |
 | `check_project.py` | Check repository files for broken links, local paths and generated artifacts. |
 | `audit_matchers.py` | Generate/check the class catalog and named Python adapters. |
 | `audit_dataset_sources.py` | Generate/check the dataset catalog without downloading its sources. |

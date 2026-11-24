@@ -9,7 +9,12 @@ of the "Vorgehensweise").
 
 - **Data:** 100 web-shop tables from the WDC Schema.org Table Corpus 2023
   (class Product), 1,124 non-empty columns, 624,076 cross-table column pairs.
-- **No ground truth.** As proposed on slide 13, all matchers were run on all
+- **Ground truth (2026-11-24):** `ground_truth/wdc_product/` labels every
+  column with a concept by the meaning of its values (82 concepts, 32,687
+  corresponding pairs; see its README). Section 7 scores everything against
+  it: matching by values reaches F1 59.8%, and two-pass type blocking keeps
+  99.5% of the true pairs.
+- **Without ground truth (sections 4–6).** As proposed on slide 13, all matchers were run on all
   pairs (4,950 shop pairs, about 30 seconds); the correspondences each matcher
   selects serve as the reference for evaluating the blockers.
 - **Blockers:** eight blockers from the course ideas were compared. Two-pass
@@ -74,6 +79,7 @@ clean → scenarios (all shop pairs) → Schematch matchers → blocker evaluati
 | Step | Tool |
 |---|---|
 | Raw JSON → CSV (`vorbereitete_tabellen/`) | `tools/wdc_expand.py` |
+| Ground truth (concept per column) | `tools/wdc_gt.py` |
 | Cleaning | `tools/wdc_prepare.py` |
 | Scenarios, Schematch configuration and run | `tools/wdc_scenarios.py` |
 | Blockers and their evaluation | `tools/wdc_candidates.py` |
@@ -226,9 +232,64 @@ confusions of similar values: availability and condition are both schema.org
 enumerations, and small integers (offer count, image size) look alike. All
 correspondences are written to `results/<run>/complex_correspondences.csv`.
 
-## 7. Limitations and open points
+## 7. Evaluation against the ground truth
 
-- The reference for PC is each matcher's own decisions, not the truth: PC
+`tools/wdc_evaluate.py` scores the same run against `ground_truth/wdc_product/`
+(1,110 evaluated columns, 32,687 corresponding pairs). Precision is the share of
+predicted pairs that are correct; recall is the share of reference pairs found.
+A 1:1 selection (mutual top-1, clustering) can reach at most **78.9% recall**,
+because the reference allows several columns of one shop per concept.
+
+| Method | Predicted | P | R | F1 |
+|---|---|---|---|---|
+| LevenshteinMatcher (names) | 29,464 | 84.2% | 75.9% | 79.8% |
+| CharDistribution | 23,943 | 58.9% | 43.2% | 49.8% |
+| KolmogorovSmirnov | 26,667 | 47.1% | 38.4% | 42.3% |
+| PatternProfile | 39,549 | 31.2% | 37.7% | 34.2% |
+| JensenShannonValue | 7,927 | 73.9% | 17.9% | 28.8% |
+| PMF | 45,788 | 19.3% | 27.1% | 22.6% |
+| ValueShapeRole | 19,372 | 19.8% | 11.7% | 14.7% |
+| Mean of all matchers | 28,403 | 76.9% | 66.8% | 71.5% |
+| Mean + type blocker | 28,213 | 78.0% | 67.4% | 72.3% |
+| **Mean of value matchers + type blocker** | 27,361 | **65.6%** | **54.9%** | **59.8%** |
+| Clustering (mean + type blocker) | 27,532 | 79.8% | 67.2% | 73.0% |
+| MaxDelta 0.05 (1:n allowed) | 32,342 | 71.2% | 70.4% | 70.8% |
+
+| Blocker | RR | Recall of reference pairs |
+|---|---|---|
+| Type, one pass | 75.4% | 93.3% |
+| **Type, two passes** | **71.5%** | **99.5%** |
+| Type, three passes | 67.0% | 99.5% |
+| Three passes + top-3 per table | 74.6% | 96.6% |
+| Three passes + top-1 per table | 88.0% | 80.3% |
+| Three passes + size filter | 75.7% | 89.9% |
+| Inverted index on value tokens | 81.1% | 64.1% |
+| MinHash + LSH | 99.1% | 11.0% |
+
+Findings:
+
+1. **The label matcher is favoured.** The reference started from header names,
+   so Levenshtein and every mean containing it look better than matching by
+   values can be. The fair figure for matching by values is the mean of the six
+   value matchers: F1 59.8%.
+2. **Of the value matchers, CharDistribution is best** (F1 49.8%).
+   JensenShannon is precise (73.9%) but finds few pairs. PMF and ValueShapeRole
+   are mostly wrong: under 20% precision.
+3. **Two-pass type blocking is confirmed by the reference.** It keeps 99.5% of
+   the true pairs while removing 71.5% of all pairs, and it improves the mean's
+   precision and recall. PMF and ValueShapeRole lost many correspondences to this
+   blocker in section 4; those correspondences were mostly wrong.
+4. **Clustering** raises precision slightly (79.8%) at the same recall.
+   **MaxDelta** trades 7 points of precision for 3 points of recall.
+5. **Per concept** (value matchers): fixed formats are found almost perfectly
+   (currency 99.6% / 99.6%, availability 90%). Identifiers (sku, gtin, mpn),
+   brand, category and price ranges are weak. Their values look alike across
+   concepts, so value-based matching cannot tell them apart.
+
+## 8. Limitations and open points
+
+- The reference for PC is each matcher's own decisions, not the truth
+  (section 7 adds the evaluation against a real reference): PC
   measures how much a blocker changes a matcher's result, not whether that
   result is correct. Mutual top-1 always picks a partner when one has a
   positive score, so weak matchers produce many doubtful correspondences.
@@ -245,7 +306,7 @@ correspondences are written to `results/<run>/complex_correspondences.csv`.
   attributes, on entropy, on embeddings of value sets; sorted neighbourhood
   and canopy clustering.
 
-## 8. Reproduction
+## 9. Reproduction
 
 From the repository root, with JDK 21 (`export JAVA_HOME=$(/usr/libexec/java_home -v 21)`),
 a built Schematch (`mvn -DskipTests compile dependency:build-classpath -Dmdep.outputFile=target/cp.txt`)
@@ -263,6 +324,7 @@ python tools/wdc_scenarios.py run --jvm-arg=-Xmx8g
 .venv/bin/python tools/wdc_candidates.py evaluate results/<run>
 .venv/bin/python tools/wdc_schema.py results/<run>
 .venv/bin/python tools/wdc_complex.py results/<run>
+.venv/bin/python tools/wdc_evaluate.py results/<run>
 ```
 
 Outputs are written to `datasets-local/wdc/` and `results/` (both git-ignored).

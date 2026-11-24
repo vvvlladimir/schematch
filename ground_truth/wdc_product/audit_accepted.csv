@@ -1,0 +1,36 @@
+kind,table,column,reason
+duplicate,mercadolibre.com.ar,aggregaterating.worstrating,coincidence: constant 1 equals offer count 1; different concepts
+duplicate,lordandtaylor.com,image.height,square images: height equals width; different concepts
+duplicate,thredup.com,image.height,square images: height equals width; different concepts
+duplicate,tower.com,image.height,square images: height equals width; different concepts
+duplicate,spb.ru,offers.highprice,single-price ranges: high equals low; covered by complex_rules.csv
+duplicate,mercadolibre.com.ar,offers.lowprice,lowprice equals price; kept separate (decision 2026-11-24); covered by complex_rules.csv
+duplicate,t-online.de,isrelatedto.pricecurrency,related product uses the same currency; another product's property
+constant,burberry.com,brand.name,own-brand shop
+constant,pandora.net,brand.name,own-brand shop
+constant,puma.com,brand,own-brand shop
+constant,zaful.com,brand.name,own-brand shop
+constant,omega.com,brand.name,own-brand shop
+constant,wordpress.org,offers.price,free plugins: price 0.00 is a real price
+type,numizmatik.ru,aggregaterating.ratingvalue,rating with text around it; kept as rating (decision 2026-11-24)
+type,numizmatik.ru,image,relative image paths; still image URLs
+type,kxcdn.com,itemcondition,condition as free text; different encoding of the same concept
+type,myshopify.com,offers.itemcondition,mixed 'New' and schema.org values; same concept
+type,edmunds.com,review.datepublished,date in another format; same concept
+type,profi.ru,review[].datepublished,relative dates (a month ago); same concept
+type,zappos.com,offers.url,relative product URLs; same concept
+value,numizmatik.ru,aggregaterating.reviewcount,mostly numbers with some text; same concept
+value,all.biz,manufacturer.name,company names: manufacturer = brand (decision 2026-11-24)
+value,iso.org,brand.name,ISO is the producer of the standards
+value,made-in-china.com,brand.name,supplier company names: manufacturer = brand (decision 2026-11-24)
+value,mercadolibre.com.ar,brand.name,real brands; marketplace with many brands
+value,shoplightspeed.com,brand,real brands; many different shops
+value,unity.com,brand.name,asset publishers; many different
+value,slq.qld.gov.au,brand,mix of brands and artists; kept as brand
+value,broadbandnow.com,brand.name,provider plans repeat across rows
+value,broadbandnow.com,name,provider plans repeat across rows
+value,dan.com,name,products are domain names
+value,dan.com,offers.name,products are domain names
+value,thredup.com,name,generic second-hand item names repeat
+value,omega.com,offers.price,prices with tax text (77,572 (税込)); same concept; cleaning does not parse them
+value,spb.ru,offers.price,prices with space as thousands separator (1 140); same concept

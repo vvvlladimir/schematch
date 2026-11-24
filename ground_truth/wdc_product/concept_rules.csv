@@ -1,0 +1,41 @@
+ai_group,concept,reason
+aggregaterating.ratingcount,aggregaterating.reviewcount,decision 2026-11-24: ratingcount = reviewcount (equal in 4 of 6 shops that have both)
+reviewcount,aggregaterating.reviewcount,decision 2026-11-24: number of reviews under another parent path
+offers.minprice,lowprice,decision 2026-11-24: minprice/maxprice = lowprice/highprice
+offers.maxprice,highprice,decision 2026-11-24: minprice/maxprice = lowprice/highprice
+manufacturer,brand,decision 2026-11-24: manufacturer = brand
+manufacturer.name,brand,decision 2026-11-24: manufacturer = brand
+offers.name,name,decision 2026-11-24: offers.name = name (equal in most shops)
+url.name,name,url.* is the product object nested under url; equal to name in 5 of 7 shops
+url.description,description,url.* is the product object nested under url; equal to description in 4 of 5 shops
+url.category,category,url.* is the product object nested under url
+url.mpn,mpn,url.* is the product object nested under url
+url.productid,productid,url.* is the product object nested under url
+url.datepublished,datepublished,url.* is the product object nested under url
+url.datemodified,datemodified,url.* is the product object nested under url
+url.inlanguage,inlanguage,url.* is the product object nested under url
+url.gameplatform,operatingsystem,url.* is the product object nested under url; gameplatform = operatingsystem (equal in epicgames)
+url.operatingsystem,operatingsystem,url.* is the product object nested under url
+url.producer,brand,url.* is the product object nested under url; producer = brand (equal in epicgames)
+url.publisher,publisher,url.* is the product object nested under url
+offers.url,url,product page URL; equal to url where both exist
+offers.publisher,publisher,same property under offers
+isbn,gtin,decision 2026-11-24: identifiers by value type; ISBN is a GTIN
+gtin8,gtin,decision 2026-11-24: identifiers by value type
+gtin12,gtin,decision 2026-11-24: identifiers by value type
+gtin13,gtin,decision 2026-11-24: identifiers by value type
+gtin14,gtin,decision 2026-11-24: identifiers by value type
+reviews,review.reviewbody,review text under the plural property
+category.name,category,category given as an object
+author.name,creator,decision 2026-11-24: author = creator (person who made the work)
+image.contenturl,image,image URL given as an object
+audience,audience.suggestedgender,values are genders (male) in both
+producer,brand,producer equal to brand.name in epicgames (98 rows); decision 2026-11-24 manufacturer = brand
+gameplatform,operatingsystem,equal to operatingsystem in epicgames (97 rows)
+offers.availabilityends,pricevaliduntil,decision 2026-11-24: offer valid until (equal to pricevaliduntil in woot)
+offers.validthrough,pricevaliduntil,decision 2026-11-24: offer valid until
+offers.availabilitystarts,offers.validfrom,decision 2026-11-24: offer valid from
+offers.seller,seller,decision 2026-11-24: selling platform or shop
+author,creator,decision 2026-11-24: author = creator (person who made the work)
+offers.description,description,product description under offers
+review.description,review.reviewbody,review text under another property

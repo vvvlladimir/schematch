@@ -1,0 +1,1449 @@
+table,column,ai_group,ai_rule,ai_risk
+10x10.co.kr,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+10x10.co.kr,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+10x10.co.kr,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+10x10.co.kr,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+10x10.co.kr,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+10x10.co.kr,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+10x10.co.kr,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+10x10.co.kr,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+10x10.co.kr,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+10x10.co.kr,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+all.biz,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+all.biz,image,image,Originalpfad nach Entfernen der Arraynotation,Niedrig
+all.biz,manufacturer.name,manufacturer.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+all.biz,manufacturer.telephone,manufacturer.telephone,Originalpfad nach Entfernen der Arraynotation,Niedrig
+all.biz,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+all.biz,name[],name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+all.biz,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+all.biz,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+all.biz,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+all.biz,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+all.biz,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+all.biz,offers.url,offers.url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+all.biz,position,position,Originalpfad nach Entfernen der Arraynotation,Niedrig
+all.biz,url,url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+allegro.pl,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+allegro.pl,image,image,Originalpfad nach Entfernen der Arraynotation,Niedrig
+allegro.pl,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+allegro.pl,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+allegro.pl,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+allegro.pl,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+allegro.pl,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+allegro.pl,url,url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+amazonaws.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+amazonaws.com,description.headline,description.headline,Originalpfad nach Entfernen der Arraynotation,Niedrig
+amazonaws.com,description.keyword,description.keyword,Originalpfad nach Entfernen der Arraynotation,Niedrig
+amazonaws.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+amazonaws.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+amazonaws.com,offers.category,category,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+amazonaws.com,offers.description,offers.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+amazonaws.com,offers.fibre%20100,offers.fibre%20100,Originalpfad nach Entfernen der Arraynotation,Niedrig
+amazonaws.com,offers.fibre%20200,offers.fibre%20200,Originalpfad nach Entfernen der Arraynotation,Niedrig
+amazonaws.com,offers.fibre%20400,offers.fibre%20400,Originalpfad nach Entfernen der Arraynotation,Niedrig
+amazonaws.com,offers.gtin,gtin,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+amazonaws.com,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+amazonaws.com,offers.identifier,offers.identifier,Originalpfad nach Entfernen der Arraynotation,Niedrig
+amazonaws.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+amazonaws.com,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+amazonaws.com,offers.mpn,mpn,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+amazonaws.com,offers.name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+amazonaws.com,offers.offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+amazonaws.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+amazonaws.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+amazonaws.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+amazonaws.com,offers.sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+amazonaws.com,offers.url,offers.url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+amazonaws.com,offers[].availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+amazonaws.com,offers[].price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+amazonaws.com,offers[].pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+amazonaws.com,offers[].pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+amazonaws.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+amazonaws.com,url,url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+amazonaws.com,url.datemodified,url.datemodified,Originalpfad nach Entfernen der Arraynotation,Niedrig
+amazonaws.com,url.datepublished,url.datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+amazonaws.com,url.description,url.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+amazonaws.com,url.inlanguage,url.inlanguage,Originalpfad nach Entfernen der Arraynotation,Niedrig
+amazonaws.com,url.name,url.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+amazonaws.com,url.name[],url.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+autozone.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+autozone.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+autozone.com,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+autozone.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+autozone.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+autozone.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+autozone.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+autozone.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+avito.ru,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+avito.ru,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+avito.ru,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+avito.ru,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+avito.ru,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+avito.ru,offers.maxprice,offers.maxprice,Originalpfad nach Entfernen der Arraynotation,Niedrig
+avito.ru,offers.minprice,offers.minprice,Originalpfad nach Entfernen der Arraynotation,Niedrig
+avito.ru,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+avito.ru,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+banggood.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+banggood.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+banggood.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+banggood.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+banggood.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+banggood.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+banggood.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+banggood.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+banggood.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+banggood.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+banggood.com,offers.sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+banggood.com,offers[].availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+banggood.com,offers[].itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+banggood.com,offers[].price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+banggood.com,offers[].pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+banggood.com,offers[].pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+banggood.com,offers[].sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+banggood.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+banggood.com,sku[],sku,SKU in verschiedenen Pfadkontexten,Niedrig
+barnesandnoble.com,author,author,Originalpfad nach Entfernen der Arraynotation,Niedrig
+barnesandnoble.com,bookformat,bookformat,Originalpfad nach Entfernen der Arraynotation,Niedrig
+barnesandnoble.com,bookformat[],bookformat,Originalpfad nach Entfernen der Arraynotation,Niedrig
+barnesandnoble.com,datepublished,datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+barnesandnoble.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+barnesandnoble.com,inlanguage,inlanguage,Originalpfad nach Entfernen der Arraynotation,Niedrig
+barnesandnoble.com,isbn,isbn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+barnesandnoble.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+barnesandnoble.com,numberofpages,numberofpages,Originalpfad nach Entfernen der Arraynotation,Niedrig
+barnesandnoble.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+barnesandnoble.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+barnesandnoble.com,publisher,publisher,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bestbuy.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bestbuy.com,gtin13,gtin13,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bestbuy.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bestbuy.com,reviews,reviews,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bestbuy.com,reviews.name,review.name,review ↔ reviews (Pluralvariante),Mittel
+bestbuy.com,reviews.reviewbody,review.reviewbody,review ↔ reviews (Pluralvariante),Mittel
+bestbuy.com,reviews[].name,review.name,review ↔ reviews (Pluralvariante),Mittel
+bestbuy.com,reviews[].reviewbody,review.reviewbody,review ↔ reviews (Pluralvariante),Mittel
+bestbuy.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+bokus.com,aggregaterating.ratingcount,aggregaterating.ratingcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bokus.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bokus.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bokus.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bokus.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+bokus.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+bokus.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+bokus.com,productid,productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+boohoo.com,aggregaterating.bestrating,aggregaterating.bestrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+boohoo.com,aggregaterating.ratingcount,aggregaterating.ratingcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+boohoo.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+boohoo.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+boohoo.com,brand.url,brand.url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+boohoo.com,category,category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+boohoo.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+boohoo.com,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+boohoo.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+boohoo.com,name[],name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+boohoo.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+boohoo.com,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+boohoo.com,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+boohoo.com,offers.offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+boohoo.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+boohoo.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+boohoo.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+boohoo.com,offers[].availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+boohoo.com,offers[].highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+boohoo.com,offers[].lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+boohoo.com,offers[].offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+boohoo.com,offers[].price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+boohoo.com,offers[].pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+boohoo.com,offers[].pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+boohoo.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+bookshop.org,author.name,author.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bookshop.org,author[].name,author.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bookshop.org,bookformat,bookformat,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bookshop.org,datepublished,datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bookshop.org,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bookshop.org,inlanguage,inlanguage,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bookshop.org,isbn,isbn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bookshop.org,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bookshop.org,numberofpages,numberofpages,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bookshop.org,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+bookshop.org,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+bookshop.org,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+bookshop.org,offers.publisher,offers.publisher,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bookshop.org,offers.sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+bookshop.org,offers.url,offers.url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bookshop.org,publisher,publisher,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bookshop.org,size,size,Originalpfad nach Entfernen der Arraynotation,Niedrig
+bookshop.org,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+broadbandnow.com,aggregaterating.bestrating,aggregaterating.bestrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+broadbandnow.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+broadbandnow.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+broadbandnow.com,aggregaterating.worstrating,aggregaterating.worstrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+broadbandnow.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+broadbandnow.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+broadbandnow.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+burberry.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+burberry.com,color,color,Originalpfad nach Entfernen der Arraynotation,Niedrig
+burberry.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+burberry.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+burberry.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+burberry.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+burberry.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+burberry.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+cafepress.com,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+cafepress.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+cafepress.com,category,category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+cafepress.com,color,color,Originalpfad nach Entfernen der Arraynotation,Niedrig
+cafepress.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+cafepress.com,image,image,Originalpfad nach Entfernen der Arraynotation,Niedrig
+cafepress.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+cafepress.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+cafepress.com,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+cafepress.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+cafepress.com,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+cafepress.com,offers.offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+cafepress.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+cafepress.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+cafepress.com,productid,productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+cafepress.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+chairish.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+chairish.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+chairish.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+chairish.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+chairish.com,offers.category,category,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+chairish.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+chairish.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+chairish.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+chairish.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+com.ru,audience,audience,Originalpfad nach Entfernen der Arraynotation,Niedrig
+com.ru,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+com.ru,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+com.ru,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+com.ru,description[],description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+com.ru,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+com.ru,name[],name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+com.ru,offers.acceptedpaymentmethod,offers.acceptedpaymentmethod,Originalpfad nach Entfernen der Arraynotation,Niedrig
+com.ru,offers.acceptedpaymentmethod[],offers.acceptedpaymentmethod,Originalpfad nach Entfernen der Arraynotation,Niedrig
+com.ru,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+com.ru,offers.description,offers.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+com.ru,offers.gtin13,gtin13,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+com.ru,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+com.ru,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+com.ru,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+com.ru,offers.mpn,mpn,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+com.ru,offers.name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+com.ru,offers.offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+com.ru,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+com.ru,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+com.ru,offers.pricecurrency[],pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+com.ru,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+com.ru,offers.serialnumber,offers.serialnumber,Originalpfad nach Entfernen der Arraynotation,Niedrig
+com.ru,offers.sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+com.ru,offers.url,offers.url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+com.ru,offers[].name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+com.ru,offers[].price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+com.ru,offers[].pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+com.ru,offers[].pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+com.ru,offers[].sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+com.ru,offers[].url,offers.url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+com.ru,productid,productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+com.ru,productiondate,productiondate,Originalpfad nach Entfernen der Arraynotation,Niedrig
+com.ru,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+compass.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+compass.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+compass.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+compass.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+compass.com,offers.itemoffered,offers.itemoffered,Originalpfad nach Entfernen der Arraynotation,Niedrig
+compass.com,offers.name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+compass.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+compass.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+compass.com,offers.sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+compass.com,offers[].availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+compass.com,offers[].price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+compass.com,offers[].pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+compass.com,offers[].sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+creativelive.com,aggregaterating.bestrating,aggregaterating.bestrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+creativelive.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+creativelive.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+creativelive.com,aggregaterating.worstrating,aggregaterating.worstrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+creativelive.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+creativelive.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+creativelive.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+creativelive.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+creativemarket.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+creativemarket.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+creativemarket.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+creativemarket.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+creativemarket.com,offers.category,category,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+creativemarket.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+creativemarket.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+creativemarket.com,productid,productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+creativemarket.com,releasedate,releasedate,Originalpfad nach Entfernen der Arraynotation,Niedrig
+creativemarket.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+curioos.com,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+curioos.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+curioos.com,model,model,Originalpfad nach Entfernen der Arraynotation,Niedrig
+curioos.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+curioos.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+curioos.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+curioos.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+dan.com,category,category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+dan.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+dan.com,offers.category,category,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+dan.com,offers.name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+dan.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+dan.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+dan.com,offers.url,offers.url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+dan.com,url,url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+dhgate.com,aggregaterating.ratingcount,aggregaterating.ratingcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+dhgate.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+dhgate.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+dhgate.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+dhgate.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+docomo.ne.jp,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+docomo.ne.jp,brand.slogan,brand.slogan,Originalpfad nach Entfernen der Arraynotation,Niedrig
+docomo.ne.jp,category,category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+docomo.ne.jp,color,color,Originalpfad nach Entfernen der Arraynotation,Niedrig
+docomo.ne.jp,color[],color,Originalpfad nach Entfernen der Arraynotation,Niedrig
+docomo.ne.jp,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+docomo.ne.jp,gtin13,gtin13,Originalpfad nach Entfernen der Arraynotation,Niedrig
+docomo.ne.jp,gtin13[],gtin13,Originalpfad nach Entfernen der Arraynotation,Niedrig
+docomo.ne.jp,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+docomo.ne.jp,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+docomo.ne.jp,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+docomo.ne.jp,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+docomo.ne.jp,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+docomo.ne.jp,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+docomo.ne.jp,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+docomo.ne.jp,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+docomo.ne.jp,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+docomo.ne.jp,size,size,Originalpfad nach Entfernen der Arraynotation,Niedrig
+docomo.ne.jp,size[],size,Originalpfad nach Entfernen der Arraynotation,Niedrig
+docomo.ne.jp,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+docomo.ne.jp,sku[],sku,SKU in verschiedenen Pfadkontexten,Niedrig
+edmunds.com,aggregaterating.bestrating,aggregaterating.bestrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+edmunds.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+edmunds.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+edmunds.com,aggregaterating.worstrating,aggregaterating.worstrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+edmunds.com,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+edmunds.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+edmunds.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+edmunds.com,itemcondition,itemcondition,Originalpfad nach Entfernen der Arraynotation,Niedrig
+edmunds.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+edmunds.com,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+edmunds.com,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+edmunds.com,offers.offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+edmunds.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+edmunds.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+edmunds.com,review.author,review.author,Originalpfad nach Entfernen der Arraynotation,Niedrig
+edmunds.com,review.datepublished,review.datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+edmunds.com,review.description,review.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+edmunds.com,review.headline,review.headline,Originalpfad nach Entfernen der Arraynotation,Niedrig
+edmunds.com,review.name,review.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+edmunds.com,review.reviewbody,review.reviewbody,Originalpfad nach Entfernen der Arraynotation,Niedrig
+edmunds.com,review.thumbnailurl,review.thumbnailurl,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elektronikai-hulladek-felvasarlas.hu,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elektronikai-hulladek-felvasarlas.hu,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elektronikai-hulladek-felvasarlas.hu,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elektronikai-hulladek-felvasarlas.hu,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elliman.com,address.addresscountry,address.addresscountry,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elliman.com,address.addresslocality,address.addresslocality,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elliman.com,address.addressregion,address.addressregion,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elliman.com,address.postalcode,address.postalcode,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elliman.com,address.streetaddress,address.streetaddress,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elliman.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+elliman.com,containedinplace.name,containedinplace.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elliman.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elliman.com,floorsize.unitcode,floorsize.unitcode,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elliman.com,floorsize.value,floorsize.value,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elliman.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elliman.com,numberofbedrooms,numberofbedrooms,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elliman.com,numberoffullbathrooms,numberoffullbathrooms,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elliman.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+elliman.com,offers.businessfunction,offers.businessfunction,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elliman.com,offers.itemoffered,offers.itemoffered,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elliman.com,offers.name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elliman.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+elliman.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+elliman.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+elliman.com,offers.validfrom,offers.validfrom,Originalpfad nach Entfernen der Arraynotation,Niedrig
+elliman.com,offers.validthrough,offers.validthrough,Originalpfad nach Entfernen der Arraynotation,Niedrig
+eltiempo.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+eltiempo.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+eltiempo.com,image.name,image.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+eltiempo.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+eltiempo.com,productid,productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+eltiempo.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+epicgames.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+epicgames.com,datepublished,datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,gameplatform,gameplatform,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,gameplatform[],gameplatform,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,name[],name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,offers.acceptedpaymentmethod[],offers.acceptedpaymentmethod,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+epicgames.com,offers.availabledeliverymethod,offers.availabledeliverymethod,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,offers.category,category,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+epicgames.com,offers.description,offers.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,offers.name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+epicgames.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+epicgames.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+epicgames.com,offers[].acceptedpaymentmethod[],offers.acceptedpaymentmethod,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,offers[].availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+epicgames.com,offers[].availabledeliverymethod,offers.availabledeliverymethod,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,offers[].category,category,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+epicgames.com,offers[].description,offers.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,offers[].name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,offers[].pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+epicgames.com,offers[].pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+epicgames.com,operatingsystem,operatingsystem,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,operatingsystem[],operatingsystem,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,producer,producer,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,publisher,publisher,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+epicgames.com,url.datepublished,url.datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,url.description,url.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,url.gameplatform,url.gameplatform,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,url.gameplatform[],url.gameplatform,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,url.name,url.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,url.name[],url.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,url.operatingsystem,url.operatingsystem,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,url.operatingsystem[],url.operatingsystem,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,url.producer,url.producer,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,url.publisher,url.publisher,Originalpfad nach Entfernen der Arraynotation,Niedrig
+epicgames.com,url.sku,sku,SKU in verschiedenen Pfadkontexten,Mittel
+esy.es,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+esy.es,manufacturer.telephone,manufacturer.telephone,Originalpfad nach Entfernen der Arraynotation,Niedrig
+esy.es,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+esy.es,name[],name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+etsy.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+etsy.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+etsy.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+etsy.com,category,category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+etsy.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+etsy.com,gtin,gtin,Originalpfad nach Entfernen der Arraynotation,Niedrig
+etsy.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+etsy.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+etsy.com,offers.eligiblequantity,offers.eligiblequantity,Originalpfad nach Entfernen der Arraynotation,Niedrig
+etsy.com,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+etsy.com,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+etsy.com,offers.offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+etsy.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+etsy.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+etsy.com,position,position,Originalpfad nach Entfernen der Arraynotation,Niedrig
+etsy.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+farfetch.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+farfetch.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+farfetch.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+farfetch.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+farfetch.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+farfetch.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+farfetch.com,position,position,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fateful.hu,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fateful.hu,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fateful.hu,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fateful.hu,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fineartamerica.com,aggregaterating.bestrating,aggregaterating.bestrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fineartamerica.com,aggregaterating.ratingcount,aggregaterating.ratingcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fineartamerica.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fineartamerica.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fineartamerica.com,aggregaterating.worstrating,aggregaterating.worstrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fineartamerica.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+fineartamerica.com,category,category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fineartamerica.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fineartamerica.com,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fineartamerica.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fineartamerica.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fineartamerica.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fineartamerica.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fineartamerica.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fineartamerica.com,productid,productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fineartamerica.com,review[].datepublished,review.datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fineartamerica.com,review[].reviewbody,review.reviewbody,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fineartamerica.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+fineartamerica.com,url.category,url.category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fineartamerica.com,url.description,url.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fineartamerica.com,url.mpn,url.mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fineartamerica.com,url.name,url.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fineartamerica.com,url.productid,url.productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fineartamerica.com,url.sku,sku,SKU in verschiedenen Pfadkontexten,Mittel
+fleetfeet.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+fleetfeet.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fleetfeet.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+fleetfeet.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fleetfeet.com,offers.gtin,gtin,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fleetfeet.com,offers.gtin12,gtin12,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fleetfeet.com,offers.gtin13,gtin13,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fleetfeet.com,offers.gtin8,gtin8,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fleetfeet.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fleetfeet.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fleetfeet.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fleetfeet.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fleetfeet.com,offers.sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+fleetfeet.com,offers[].availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fleetfeet.com,offers[].gtin,gtin,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fleetfeet.com,offers[].gtin12,gtin12,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fleetfeet.com,offers[].gtin13,gtin13,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fleetfeet.com,offers[].gtin14,gtin14,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fleetfeet.com,offers[].itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fleetfeet.com,offers[].price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fleetfeet.com,offers[].pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fleetfeet.com,offers[].pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+fleetfeet.com,offers[].sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+fleetfeet.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+freelancer.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+freelancer.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+freelancer.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+freelancer.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+graphicriver.net,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+graphicriver.net,category,category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+graphicriver.net,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+graphicriver.net,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+graphicriver.net,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+graphicriver.net,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+graphicriver.net,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+graphicriver.net,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+graphicriver.net,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+graphicriver.net,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+graphicriver.net,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+havidijas-keresooptimalizalas.hu,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+havidijas-keresooptimalizalas.hu,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+havidijas-keresooptimalizalas.hu,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+havidijas-keresooptimalizalas.hu,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+hbr.org,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+hbr.org,image,image,Originalpfad nach Entfernen der Arraynotation,Niedrig
+hbr.org,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+hbr.org,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+hbr.org,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+hbr.org,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+hm.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+hm.com,category.name,category.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+hm.com,color,color,Originalpfad nach Entfernen der Arraynotation,Niedrig
+hm.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+hm.com,itemcondition,itemcondition,Originalpfad nach Entfernen der Arraynotation,Niedrig
+hm.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+hm.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+hm.com,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+hm.com,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+hm.com,offers.offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+hm.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+hm.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+hm.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+iherb.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+iherb.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+iherb.com,aggregaterating[].ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+iherb.com,aggregaterating[].reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+iherb.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+iherb.com,category,category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+iherb.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+iherb.com,description[],description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+iherb.com,gtin12,gtin12,Originalpfad nach Entfernen der Arraynotation,Niedrig
+iherb.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+iherb.com,name[],name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+iherb.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+iherb.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+iherb.com,offers[].price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+iherb.com,offers[].pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+iherb.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+iso.org,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+iso.org,category,category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+iso.org,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+iso.org,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+iso.org,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+iso.org,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+iso.org,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+iso.org,productid,productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+iso.org,releasedate,releasedate,Originalpfad nach Entfernen der Arraynotation,Niedrig
+istockphoto.com,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+istockphoto.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+istockphoto.com,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+istockphoto.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+istockphoto.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+istockphoto.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+kozaleathers.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+kozaleathers.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+kozaleathers.com,weight.value,weight.value,Originalpfad nach Entfernen der Arraynotation,Niedrig
+kxcdn.com,aggregaterating.bestrating,aggregaterating.bestrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+kxcdn.com,aggregaterating.ratingcount,aggregaterating.ratingcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+kxcdn.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+kxcdn.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+kxcdn.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+kxcdn.com,itemcondition,itemcondition,Originalpfad nach Entfernen der Arraynotation,Niedrig
+kxcdn.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+line.me,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+line.me,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+line.me,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+line.me,offers.offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+line.me,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+line.me,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+line.me,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+lookfantastic.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+lookfantastic.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+lookfantastic.com,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+lookfantastic.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+lookfantastic.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+lookfantastic.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+lookfantastic.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+lookfantastic.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+lookfantastic.com,offers.sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+lookfantastic.com,offers[].availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+lookfantastic.com,offers[].itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+lookfantastic.com,offers[].price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+lookfantastic.com,offers[].pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+lookfantastic.com,offers[].sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+lookfantastic.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+lordandtaylor.com,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+lordandtaylor.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+lordandtaylor.com,gtin12,gtin12,Originalpfad nach Entfernen der Arraynotation,Niedrig
+lordandtaylor.com,image.height,image.height,Originalpfad nach Entfernen der Arraynotation,Niedrig
+lordandtaylor.com,image.name,image.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+lordandtaylor.com,image.width,image.width,Originalpfad nach Entfernen der Arraynotation,Niedrig
+lordandtaylor.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+lordandtaylor.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+lordandtaylor.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+lordandtaylor.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+lordandtaylor.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+lordandtaylor.com,productid,productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+lordandtaylor.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+made-in-china.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+made-in-china.com,category,category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+made-in-china.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+made-in-china.com,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+made-in-china.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+made-in-china.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+made-in-china.com,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+made-in-china.com,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+made-in-china.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+made-in-china.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+made-in-china.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+made-in-china.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+mahoneswallpapershop.com,aggregaterating.ratingcount,aggregaterating.ratingcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mahoneswallpapershop.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mahoneswallpapershop.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+mahoneswallpapershop.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mahoneswallpapershop.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mahoneswallpapershop.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mahoneswallpapershop.com,offers.gtin12,gtin12,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mahoneswallpapershop.com,offers.gtin13,gtin13,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mahoneswallpapershop.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mahoneswallpapershop.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mahoneswallpapershop.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mahoneswallpapershop.com,offers.sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+mahoneswallpapershop.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+mattel.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+mattel.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mattel.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mattel.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mattel.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mattel.com,offers.name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mattel.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mattel.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mattel.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mattel.com,offers.sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+mattel.com,offers[].name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mattel.com,offers[].price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mattel.com,offers[].pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mattel.com,offers[].pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mattel.com,offers[].sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+mattel.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+mattel.com,url.description,url.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mattel.com,url.name,url.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mattel.com,url.sku,sku,SKU in verschiedenen Pfadkontexten,Mittel
+mercadolibre.com.ar,aggregaterating.bestrating,aggregaterating.bestrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mercadolibre.com.ar,aggregaterating.ratingcount,aggregaterating.ratingcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mercadolibre.com.ar,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mercadolibre.com.ar,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mercadolibre.com.ar,aggregaterating.worstrating,aggregaterating.worstrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mercadolibre.com.ar,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+mercadolibre.com.ar,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+mercadolibre.com.ar,itemcondition,itemcondition,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mercadolibre.com.ar,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mercadolibre.com.ar,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mercadolibre.com.ar,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mercadolibre.com.ar,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mercadolibre.com.ar,offers.offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mercadolibre.com.ar,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mercadolibre.com.ar,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mercadolibre.com.ar,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mercadolibre.com.ar,productid,productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mercadolibre.com.ar,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+mercari.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+mercari.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mercari.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mercari.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mercari.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mercari.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mercari.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+moosejaw.com,color,color,Originalpfad nach Entfernen der Arraynotation,Niedrig
+moosejaw.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+moosejaw.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+moosejaw.com,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+moosejaw.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+moosejaw.com,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+moosejaw.com,offers.offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+moosejaw.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+moosejaw.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+moosejaw.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+moosejaw.com,size,size,Originalpfad nach Entfernen der Arraynotation,Niedrig
+moosejaw.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+mouser.com,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+mouser.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mouser.com,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mouser.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mouser.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mouser.com,offers.inventorylevel,offers.inventorylevel,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mouser.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mouser.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mouser.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mouser.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+mybigcommerce.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+mybigcommerce.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mybigcommerce.com,description[],description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mybigcommerce.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mybigcommerce.com,name[],name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mybigcommerce.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mybigcommerce.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mybigcommerce.com,offers.maxprice,offers.maxprice,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mybigcommerce.com,offers.minprice,offers.minprice,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mybigcommerce.com,offers.name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mybigcommerce.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mybigcommerce.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mybigcommerce.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mybigcommerce.com,offers.url,offers.url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mybigcommerce.com,offers[].availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mybigcommerce.com,offers[].itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mybigcommerce.com,offers[].maxprice,offers.maxprice,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mybigcommerce.com,offers[].minprice,offers.minprice,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mybigcommerce.com,offers[].price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mybigcommerce.com,offers[].pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mybigcommerce.com,offers[].pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+mybigcommerce.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+mybigcommerce.com,url.description,url.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mybigcommerce.com,url.name,url.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+mybigcommerce.com,url.sku,sku,SKU in verschiedenen Pfadkontexten,Mittel
+myshopify.com,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+myshopify.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+myshopify.com,brand[],brand,brand ↔ brand.name (Produktmarke),Mittel
+myshopify.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,description[],description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,image,image,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,image.caption,image.caption,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,image.caption[],image.caption,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,image.height,image.height,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,image.inlanguage,image.inlanguage,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,image.name,image.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,image.width,image.width,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,image[],image,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,name[],name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers,offers,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers.brand,offers.brand,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.breadcrumb,offers.breadcrumb,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.byartist,offers.byartist,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.cat,offers.cat,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.checkoutpageurltemplate,offers.checkoutpageurltemplate,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.copyrightholder,offers.copyrightholder,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.datepublished,offers.datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.description,offers.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.description[],offers.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.gtin,gtin,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers.gtin12,gtin12,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers.gtin13,gtin13,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers.gtin14,gtin14,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers.gtin8,gtin8,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers.headline[],offers.headline,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers.image,offers.image,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.inventorylevel,offers.inventorylevel,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.isbn,isbn,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers.mpn,mpn,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers.name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.name[],offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.numberofpages,offers.numberofpages,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers.price[],price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers.pricecurrency[],pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers.publisher,offers.publisher,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.reviewbody,offers.reviewbody,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.seller,offers.seller,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+myshopify.com,offers.tags,offers.tags,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers.url,offers.url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers[].availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers[].checkoutpageurltemplate,offers.checkoutpageurltemplate,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers[].description,offers.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers[].gtin,gtin,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers[].gtin12,gtin12,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers[].gtin13,gtin13,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers[].gtin14,gtin14,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers[].gtin8,gtin8,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers[].inventorylevel,offers.inventorylevel,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers[].itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers[].mpn,mpn,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers[].name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers[].name[],offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers[].price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers[].pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers[].pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myshopify.com,offers[].seller,offers.seller,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,offers[].sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+myshopify.com,offers[].url,offers.url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+myshopify.com,url,url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,url.brand,url.brand,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,url.datepublished,url.datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,url.description,url.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,url.gtin12,url.gtin12,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,url.mpn,url.mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,url.name,url.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,url.name[],url.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,url.pricerange,url.pricerange,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,url.productid,url.productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myshopify.com,url.sku,sku,SKU in verschiedenen Pfadkontexten,Mittel
+myshopify.com,url.telephone,url.telephone,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myspreadshop.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myspreadshop.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myspreadshop.com,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+myspreadshop.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myspreadshop.com,itemcondition,itemcondition,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myspreadshop.com,manufacturer,manufacturer,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myspreadshop.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+myspreadshop.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myspreadshop.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myspreadshop.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+myspreadshop.com,offers.url,offers.url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+numizmatik.ru,additionalproperty[].name,additionalproperty.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+numizmatik.ru,additionalproperty[].value,additionalproperty.value,Originalpfad nach Entfernen der Arraynotation,Niedrig
+numizmatik.ru,aggregaterating.bestrating,aggregaterating.bestrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+numizmatik.ru,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+numizmatik.ru,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+numizmatik.ru,aggregaterating.worstrating,aggregaterating.worstrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+numizmatik.ru,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+numizmatik.ru,image,image,Originalpfad nach Entfernen der Arraynotation,Niedrig
+numizmatik.ru,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+numizmatik.ru,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+numizmatik.ru,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+numizmatik.ru,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+numizmatik.ru,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+numizmatik.ru,offers.url,offers.url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+numizmatik.ru,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+numizmatik.ru,url,url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+odoo.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+odoo.com,description[],description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+odoo.com,image,image,Originalpfad nach Entfernen der Arraynotation,Niedrig
+odoo.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+odoo.com,name[],name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+odoo.com,offers.listprice,offers.listprice,Originalpfad nach Entfernen der Arraynotation,Niedrig
+odoo.com,offers.name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+odoo.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+odoo.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+odoo.com,url,url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+odoo.com,url[],url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+omega.com,brand.logo,brand.logo,Originalpfad nach Entfernen der Arraynotation,Niedrig
+omega.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+omega.com,brand.sameas[],brand.sameas,Originalpfad nach Entfernen der Arraynotation,Niedrig
+omega.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+omega.com,description[],description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+omega.com,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+omega.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+omega.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+omega.com,offers.availability[],availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+omega.com,offers.mpn,mpn,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+omega.com,offers.mpn[],mpn,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+omega.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+omega.com,offers.price[],price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+omega.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+omega.com,reviewcount,reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+omega.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+pandora.net,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+pandora.net,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pandora.net,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pandora.net,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pandora.net,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pandora.net,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pandora.net,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pandora.net,price,price,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pandora.net,pricecurrency,pricecurrency,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pandora.net,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+pinkoi.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pinkoi.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pinkoi.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+pinkoi.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pinkoi.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pinkoi.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pinkoi.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pinkoi.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pinkoi.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pinkoi.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pinkoi.com,productid,productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pinkoi.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+pixels.com,aggregaterating.bestrating,aggregaterating.bestrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,aggregaterating.ratingcount,aggregaterating.ratingcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,aggregaterating.worstrating,aggregaterating.worstrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,aggregaterating[].bestrating,aggregaterating.bestrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,aggregaterating[].ratingcount,aggregaterating.ratingcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,aggregaterating[].ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,aggregaterating[].reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,aggregaterating[].worstrating,aggregaterating.worstrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+pixels.com,category,category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pixels.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pixels.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pixels.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pixels.com,offers[].availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pixels.com,offers[].price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pixels.com,offers[].pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pixels.com,offers[].pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pixels.com,productid,productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,review[].datepublished,review.datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,review[].reviewbody,review.reviewbody,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+pixels.com,url.category,url.category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,url.description,url.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,url.mpn,url.mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,url.name,url.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,url.productid,url.productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pixels.com,url.sku,sku,SKU in verschiedenen Pfadkontexten,Mittel
+poshmark.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+poshmark.com,category,category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+poshmark.com,color,color,Originalpfad nach Entfernen der Arraynotation,Niedrig
+poshmark.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+poshmark.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+poshmark.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+poshmark.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+poshmark.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+poshmark.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+poshmark.com,productid,productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+poshmark.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+pp.ua,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+pp.ua,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+pp.ua,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pp.ua,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pp.ua,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+pp.ua,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pp.ua,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pp.ua,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pp.ua,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pp.ua,offers.offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pp.ua,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pp.ua,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pp.ua,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+pp.ua,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+profi.ru,aggregaterating.bestrating,aggregaterating.bestrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+profi.ru,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+profi.ru,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+profi.ru,aggregaterating.worstrating,aggregaterating.worstrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+profi.ru,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+profi.ru,image,image,Originalpfad nach Entfernen der Arraynotation,Niedrig
+profi.ru,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+profi.ru,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+profi.ru,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+profi.ru,offers.offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+profi.ru,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+profi.ru,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+profi.ru,pricerange,pricerange,Originalpfad nach Entfernen der Arraynotation,Niedrig
+profi.ru,review[].datepublished,review.datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+profi.ru,review[].itemreviewed,review.itemreviewed,Originalpfad nach Entfernen der Arraynotation,Niedrig
+profi.ru,review[].reviewbody,review.reviewbody,Originalpfad nach Entfernen der Arraynotation,Niedrig
+puma.com,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+puma.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+puma.com,color,color,Originalpfad nach Entfernen der Arraynotation,Niedrig
+puma.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+puma.com,model,model,Originalpfad nach Entfernen der Arraynotation,Niedrig
+puma.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+puma.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+puma.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+puma.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+puma.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+puma.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+puma.com,offers[].availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+puma.com,offers[].price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+puma.com,offers[].pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+puma.com,offers[].pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+puma.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+revolve.com,aggregaterating.bestrating,aggregaterating.bestrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+revolve.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+revolve.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+revolve.com,aggregaterating.worstrating,aggregaterating.worstrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+revolve.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+revolve.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+revolve.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+revolve.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+revolve.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+revolve.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+revolve.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+revolve.com,review.datepublished,review.datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+revolve.com,review.description,review.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+revolve.com,review[].datepublished,review.datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+revolve.com,review[].description,review.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+revolve.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+robotshop.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+robotshop.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+robotshop.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+robotshop.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+robotshop.com,offers.gtin12,gtin12,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+robotshop.com,offers.gtin13,gtin13,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+robotshop.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+robotshop.com,offers.name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+robotshop.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+robotshop.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+robotshop.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+robotshop.com,offers.sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+robotshop.com,productid,productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+robotshop.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+semana.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+semana.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+semana.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+semana.com,productid,productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+semana.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+shoplightspeed.com,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+shoplightspeed.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+shoplightspeed.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+shoplightspeed.com,description[],description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+shoplightspeed.com,gtin13,gtin13,Originalpfad nach Entfernen der Arraynotation,Niedrig
+shoplightspeed.com,image,image,Originalpfad nach Entfernen der Arraynotation,Niedrig
+shoplightspeed.com,itemcondition,itemcondition,Originalpfad nach Entfernen der Arraynotation,Niedrig
+shoplightspeed.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+shoplightspeed.com,name[],name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+shoplightspeed.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+shoplightspeed.com,offers.description,offers.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+shoplightspeed.com,offers.inventorylevel,offers.inventorylevel,Originalpfad nach Entfernen der Arraynotation,Niedrig
+shoplightspeed.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+shoplightspeed.com,offers.mpn,mpn,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+shoplightspeed.com,offers.name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+shoplightspeed.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+shoplightspeed.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+shoplightspeed.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+shoplightspeed.com,offers.quantity,offers.quantity,Originalpfad nach Entfernen der Arraynotation,Niedrig
+shoplightspeed.com,offers.url,offers.url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+shoplightspeed.com,offers.validfrom,offers.validfrom,Originalpfad nach Entfernen der Arraynotation,Niedrig
+shoplightspeed.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+shopstyle.com,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+shopstyle.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+shopstyle.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+shopstyle.com,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+shopstyle.com,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+shopstyle.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+shopstyle.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+shopstyle.com,offers.sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+shopstyle.com,productid,productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+shopstyle.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+skipthedishes.com,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+skipthedishes.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+skipthedishes.com,description[],description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+skipthedishes.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+skipthedishes.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+skipthedishes.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+slq.qld.gov.au,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+slq.qld.gov.au,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+slq.qld.gov.au,image,image,Originalpfad nach Entfernen der Arraynotation,Niedrig
+slq.qld.gov.au,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+slq.qld.gov.au,name[],name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+slq.qld.gov.au,price,price,Originalpfad nach Entfernen der Arraynotation,Niedrig
+slq.qld.gov.au,pricecurrency,pricecurrency,Originalpfad nach Entfernen der Arraynotation,Niedrig
+slq.qld.gov.au,url,url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+spb.ru,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+spb.ru,brand.address,brand.address,Originalpfad nach Entfernen der Arraynotation,Niedrig
+spb.ru,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+spb.ru,brand.telephone,brand.telephone,Originalpfad nach Entfernen der Arraynotation,Niedrig
+spb.ru,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+spb.ru,description[],description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+spb.ru,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+spb.ru,name[],name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+spb.ru,offers.acceptedpaymentmethod,offers.acceptedpaymentmethod,Originalpfad nach Entfernen der Arraynotation,Niedrig
+spb.ru,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+spb.ru,offers.availabledeliverymethod,offers.availabledeliverymethod,Originalpfad nach Entfernen der Arraynotation,Niedrig
+spb.ru,offers.category,category,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+spb.ru,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+spb.ru,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+spb.ru,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+spb.ru,offers.name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+spb.ru,offers.offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+spb.ru,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+spb.ru,offers.price[],price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+spb.ru,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+spb.ru,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+spb.ru,offers.seller,offers.seller,Originalpfad nach Entfernen der Arraynotation,Niedrig
+spb.ru,offers.serialnumber,offers.serialnumber,Originalpfad nach Entfernen der Arraynotation,Niedrig
+spb.ru,offers.sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+spb.ru,offers.url,offers.url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+spb.ru,offers.warranty,offers.warranty,Originalpfad nach Entfernen der Arraynotation,Niedrig
+spb.ru,offers[].availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+spb.ru,offers[].highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+spb.ru,offers[].lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+spb.ru,offers[].name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+spb.ru,offers[].offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+spb.ru,offers[].price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+spb.ru,offers[].price[],price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+spb.ru,offers[].pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+spb.ru,offers[].sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+spb.ru,offers[].url,offers.url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+spb.ru,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+steampowered.com,aggregaterating.bestrating,aggregaterating.bestrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+steampowered.com,aggregaterating.description,aggregaterating.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+steampowered.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+steampowered.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+steampowered.com,aggregaterating.worstrating,aggregaterating.worstrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+steampowered.com,image,image,Originalpfad nach Entfernen der Arraynotation,Niedrig
+steampowered.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+steampowered.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+steampowered.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+steampowered.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+t-online.de,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+t-online.de,brand[],brand,brand ↔ brand.name (Produktmarke),Mittel
+t-online.de,category,category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+t-online.de,category[],category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+t-online.de,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+t-online.de,description[],description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+t-online.de,isrelatedto.price,isrelatedto.price,Originalpfad nach Entfernen der Arraynotation,Niedrig
+t-online.de,isrelatedto.pricecurrency,isrelatedto.pricecurrency,Originalpfad nach Entfernen der Arraynotation,Niedrig
+t-online.de,isrelatedto[].price,isrelatedto.price,Originalpfad nach Entfernen der Arraynotation,Niedrig
+t-online.de,isrelatedto[].pricecurrency,isrelatedto.pricecurrency,Originalpfad nach Entfernen der Arraynotation,Niedrig
+t-online.de,itemcondition,itemcondition,Originalpfad nach Entfernen der Arraynotation,Niedrig
+t-online.de,manufacturer,manufacturer,Originalpfad nach Entfernen der Arraynotation,Niedrig
+t-online.de,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+t-online.de,name[],name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+t-online.de,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+t-online.de,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+t-online.de,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+t-online.de,offers.offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+t-online.de,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+t-online.de,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+t-online.de,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+t-online.de,offers.url,offers.url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+t-online.de,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+t-online.de,sku[],sku,SKU in verschiedenen Pfadkontexten,Niedrig
+taobao.com,aggregaterating.bestrating,aggregaterating.bestrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+taobao.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+taobao.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+taobao.com,aggregaterating.worstrating,aggregaterating.worstrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+taobao.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+taobao.com,category,category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+taobao.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+taobao.com,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+taobao.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+taobao.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+taobao.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+taobao.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+taobao.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+taobao.com,productid,productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+taobao.com,review.datepublished,review.datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+taobao.com,review.description,review.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+taobao.com,review[].datepublished,review.datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+taobao.com,review[].description,review.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+taobao.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+themeforest.net,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+themeforest.net,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+themeforest.net,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+themeforest.net,category,category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+themeforest.net,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+themeforest.net,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+themeforest.net,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+themeforest.net,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+themeforest.net,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+themeforest.net,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+themeforest.net,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+themeforest.net,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+themeforest.net,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+threadless.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+threadless.com,category,category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+threadless.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+threadless.com,description[],description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+threadless.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+threadless.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+threadless.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+threadless.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+threadless.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+threadless.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+threadless.com,offers.url,offers.url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+threadless.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+thredup.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+thredup.com,category,category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+thredup.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+thredup.com,image.height,image.height,Originalpfad nach Entfernen der Arraynotation,Niedrig
+thredup.com,image.width,image.width,Originalpfad nach Entfernen der Arraynotation,Niedrig
+thredup.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+thredup.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+thredup.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+thredup.com,offers.name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+thredup.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+thredup.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+thredup.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+thredup.com,offers.sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+thredup.com,productid,productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+thredup.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+tiki.vn,aggregaterating.bestrating,aggregaterating.bestrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tiki.vn,aggregaterating.ratingcount,aggregaterating.ratingcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tiki.vn,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tiki.vn,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tiki.vn,aggregaterating.worstrating,aggregaterating.worstrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tiki.vn,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+tiki.vn,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tiki.vn,itemcondition,itemcondition,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tiki.vn,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tiki.vn,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tiki.vn,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+tiki.vn,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+tiki.vn,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+tiki.vn,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+tiki.vn,offers.offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+tiki.vn,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+tiki.vn,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+tiki.vn,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+tiki.vn,review.datepublished,review.datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tiki.vn,review.name,review.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tiki.vn,review.reviewbody,review.reviewbody,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tiki.vn,review[].datepublished,review.datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tiki.vn,review[].name,review.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tiki.vn,review[].reviewbody,review.reviewbody,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tiki.vn,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+todocoleccion.net,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+todocoleccion.net,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+todocoleccion.net,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+todocoleccion.net,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+todocoleccion.net,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+todocoleccion.net,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+todocoleccion.net,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+touchofmodern.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+touchofmodern.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+touchofmodern.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+touchofmodern.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+tower.com,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+tower.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tower.com,gtin12,gtin12,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tower.com,gtin13,gtin13,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tower.com,image.height,image.height,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tower.com,image.name,image.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tower.com,image.width,image.width,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tower.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tower.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+tower.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+tower.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+tower.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+tower.com,offers.sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+tower.com,productid,productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+tower.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+udg.mx,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+udg.mx,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+udg.mx,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+udg.mx,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+udg.mx,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+udg.mx,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+udg.mx,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+udg.mx,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+udg.mx,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+udg.mx,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+uk.com,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+uk.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+uk.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,description[],description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers.category,category,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers.checkoutpageurltemplate,offers.checkoutpageurltemplate,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,offers.description,offers.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,offers.gtin,gtin,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers.gtin13,gtin13,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers.maxprice,offers.maxprice,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,offers.minprice,offers.minprice,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,offers.mpn,mpn,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers.name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,offers.offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers.price[],price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers.seller,offers.seller,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,offers.sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+uk.com,offers.url,offers.url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,offers.valueaddedtaxincluded,offers.valueaddedtaxincluded,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,offers[].availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers[].checkoutpageurltemplate,offers.checkoutpageurltemplate,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,offers[].gtin,gtin,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers[].gtin13,gtin13,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers[].itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers[].name,offers.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,offers[].price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers[].pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers[].pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+uk.com,offers[].sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+uk.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+uk.com,url,url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,url.category,url.category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,url.datemodified,url.datemodified,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,url.datepublished,url.datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,url.description,url.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,url.gtin13,url.gtin13,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,url.inlanguage,url.inlanguage,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,url.name,url.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,url.name[],url.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,url.productid,url.productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+uk.com,url.sku,sku,SKU in verschiedenen Pfadkontexten,Mittel
+unilibro.it,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+unilibro.it,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+unilibro.it,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+unilibro.it,gtin13,gtin13,Originalpfad nach Entfernen der Arraynotation,Niedrig
+unilibro.it,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+unilibro.it,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+unilibro.it,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+unilibro.it,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+unilibro.it,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+unilibro.it,offers[].availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+unilibro.it,offers[].itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+unilibro.it,offers[].price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+unilibro.it,offers[].pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+unity.com,aggregaterating.bestrating,aggregaterating.bestrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+unity.com,aggregaterating.ratingcount,aggregaterating.ratingcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+unity.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+unity.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+unity.com,aggregaterating.worstrating,aggregaterating.worstrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+unity.com,brand,brand,brand ↔ brand.name (Produktmarke),Mittel
+unity.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+unity.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+unity.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+unity.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+unity.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+unity.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+unity.com,review.datepublished,review.datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+unity.com,review.name,review.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+unity.com,review.reviewbody,review.reviewbody,Originalpfad nach Entfernen der Arraynotation,Niedrig
+unity.com,review[].datepublished,review.datepublished,Originalpfad nach Entfernen der Arraynotation,Niedrig
+unity.com,review[].name,review.name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+unity.com,review[].reviewbody,review.reviewbody,Originalpfad nach Entfernen der Arraynotation,Niedrig
+vwr.com,category,category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+vwr.com,category[],category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+vwr.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+vwr.com,manufacturer,manufacturer,Originalpfad nach Entfernen der Arraynotation,Niedrig
+vwr.com,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+vwr.com,mpn[],mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+vwr.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+vwr.com,name[],name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+vwr.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+vwr.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+vwr.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+vwr.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+vwr.com,sku[],sku,SKU in verschiedenen Pfadkontexten,Niedrig
+weboldal-webaruhaz-keszites-budapest.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+weboldal-webaruhaz-keszites-budapest.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+weboldal-webaruhaz-keszites-budapest.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+weboldal-webaruhaz-keszites-budapest.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+whatfontis.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+whatfontis.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+whatfontis.com,category,category,Originalpfad nach Entfernen der Arraynotation,Niedrig
+whatfontis.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+whatfontis.com,image,image,Originalpfad nach Entfernen der Arraynotation,Niedrig
+whatfontis.com,image[].contenturl,image.contenturl,Originalpfad nach Entfernen der Arraynotation,Niedrig
+whatfontis.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+whatfontis.com,productid,productid,Originalpfad nach Entfernen der Arraynotation,Niedrig
+whatfontis.com,releasedate,releasedate,Originalpfad nach Entfernen der Arraynotation,Niedrig
+whatfontis.com,url,url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+woot.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+woot.com,offers.availabilityends,offers.availabilityends,Originalpfad nach Entfernen der Arraynotation,Niedrig
+woot.com,offers.availabilitystarts,offers.availabilitystarts,Originalpfad nach Entfernen der Arraynotation,Niedrig
+woot.com,offers.category,category,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+woot.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+woot.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+woot.com,url,url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+wordpress.org,aggregaterating.bestrating,aggregaterating.bestrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+wordpress.org,aggregaterating.ratingcount,aggregaterating.ratingcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+wordpress.org,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+wordpress.org,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+wordpress.org,aggregaterating.worstrating,aggregaterating.worstrating,Originalpfad nach Entfernen der Arraynotation,Niedrig
+wordpress.org,datemodified,datemodified,Originalpfad nach Entfernen der Arraynotation,Niedrig
+wordpress.org,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+wordpress.org,interactionstatistic.interactiontype,interactionstatistic.interactiontype,Originalpfad nach Entfernen der Arraynotation,Niedrig
+wordpress.org,interactionstatistic.userinteractioncount,interactionstatistic.userinteractioncount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+wordpress.org,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+wordpress.org,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+wordpress.org,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+wordpress.org,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+wordpress.org,offers.offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+wordpress.org,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+wordpress.org,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+wordpress.org,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+wordpress.org,operatingsystem,operatingsystem,Originalpfad nach Entfernen der Arraynotation,Niedrig
+wordpress.org,operatingsystem[],operatingsystem,Originalpfad nach Entfernen der Arraynotation,Niedrig
+wordpress.org,softwareversion,softwareversion,Originalpfad nach Entfernen der Arraynotation,Niedrig
+yahoo.com,brand.description,brand.description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+yahoo.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+yahoo.com,brand.openinghours,brand.openinghours,Originalpfad nach Entfernen der Arraynotation,Niedrig
+yahoo.com,brand.paymentaccepted,brand.paymentaccepted,Originalpfad nach Entfernen der Arraynotation,Niedrig
+yahoo.com,brand.pricerange,brand.pricerange,Originalpfad nach Entfernen der Arraynotation,Niedrig
+yahoo.com,brand.telephone,brand.telephone,Originalpfad nach Entfernen der Arraynotation,Niedrig
+yahoo.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+yahoo.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+yahoo.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+yahoo.com,offers.highprice,highprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+yahoo.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+yahoo.com,offers.lowprice,lowprice,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+yahoo.com,offers.offercount,offercount,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+yahoo.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+yahoo.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+yahoo.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+yahoo.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+yamaha.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+yamaha.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+yamaha.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+yamaha.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+yamaha.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+yamaha.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+yamaha.com,offers.sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+yamaha.com,offers[].price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+yamaha.com,offers[].pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+yamaha.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+zaful.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+zaful.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+zaful.com,audience.suggestedgender,audience.suggestedgender,Originalpfad nach Entfernen der Arraynotation,Niedrig
+zaful.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+zaful.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+zaful.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+zaful.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+zaful.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+zaful.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+zaful.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+zaful.com,offers.pricevaliduntil,pricevaliduntil,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+zaful.com,releasedate,releasedate,Originalpfad nach Entfernen der Arraynotation,Niedrig
+zaful.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+zappos.com,aggregaterating.ratingcount,aggregaterating.ratingcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+zappos.com,aggregaterating.ratingvalue,aggregaterating.ratingvalue,Originalpfad nach Entfernen der Arraynotation,Niedrig
+zappos.com,aggregaterating.reviewcount,aggregaterating.reviewcount,Originalpfad nach Entfernen der Arraynotation,Niedrig
+zappos.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+zappos.com,color,color,Originalpfad nach Entfernen der Arraynotation,Niedrig
+zappos.com,image,image,Originalpfad nach Entfernen der Arraynotation,Niedrig
+zappos.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+zappos.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+zappos.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+zappos.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+zappos.com,offers.url,offers.url,Originalpfad nach Entfernen der Arraynotation,Niedrig
+zappos.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+zavvi.com,brand.name,brand,brand ↔ brand.name (Produktmarke),Mittel
+zavvi.com,description,description,Originalpfad nach Entfernen der Arraynotation,Niedrig
+zavvi.com,mpn,mpn,Originalpfad nach Entfernen der Arraynotation,Niedrig
+zavvi.com,name,name,Originalpfad nach Entfernen der Arraynotation,Niedrig
+zavvi.com,offers.availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+zavvi.com,offers.itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+zavvi.com,offers.price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+zavvi.com,offers.pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+zavvi.com,offers.sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+zavvi.com,offers[].availability,availability,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+zavvi.com,offers[].itemcondition,itemcondition,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+zavvi.com,offers[].price,price,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+zavvi.com,offers[].pricecurrency,pricecurrency,offers.X ↔ X (gleiches Schema.org-Feld),Mittel
+zavvi.com,offers[].sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig
+zavvi.com,sku,sku,SKU in verschiedenen Pfadkontexten,Niedrig

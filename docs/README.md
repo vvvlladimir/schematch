@@ -15,6 +15,7 @@ relative to the repository root unless stated otherwise.
 ## Project reports
 
 - [WDC product matching report](wdc-product-matching-report.md): search-space reduction, matching and clustering of the 100 web-shop tables in `vorbereitete_tabellen/`.
+- [WDC product ground truth](../ground_truth/wdc_product/README.md): concept label per column, decisions and verification.
 
 ## Optional Python backends
 
